@@ -69,7 +69,7 @@ export function InkButton({
   variant?: "solid" | "outline";
 }) {
   const base =
-    "inline-flex items-center justify-center border-2 px-6 py-2 font-display text-[15px] tracking-[0.12em] uppercase transition-colors";
+    "inline-flex shrink-0 items-center justify-center whitespace-nowrap border-2 px-5 py-2 font-display text-[13px] tracking-[0.12em] uppercase transition-colors";
   return (
     <button
       type="button"
