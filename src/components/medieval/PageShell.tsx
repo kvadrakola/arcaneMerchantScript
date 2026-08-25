@@ -69,7 +69,7 @@ export function ParchmentPanel({
       className={`parchment-surface relative min-h-[calc(100vh-74px)] border-l-2 border-[oklch(0.32_0.03_55_/_0.45)] text-ink ${className}`}
       style={{
         backgroundImage: `url(${IMG.parchment})`,
-        backgroundSize: "760px",
+        backgroundSize: "1600px",
         backgroundRepeat: "repeat",
       }}
     >

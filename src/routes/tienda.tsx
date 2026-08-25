@@ -46,7 +46,7 @@ function TiendaPage() {
             {CATEGORIAS.map((c, i) => (
               <span
                 key={c}
-                className={`border px-5 py-1.5 font-display text-[14px] tracking-[0.14em] uppercase ${
+                className={`shrink-0 whitespace-nowrap border px-5 py-1.5 font-display text-[14px] tracking-[0.14em] uppercase ${
                   i === 0
                     ? "border-[oklch(0.3_0.03_55)] bg-accent text-parchment"
                     : "border-[oklch(0.34_0.04_55_/_0.6)] text-ink"
