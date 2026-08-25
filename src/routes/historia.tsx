@@ -26,12 +26,12 @@ function HistoriaPage() {
   return (
     <PageShell>
       <ParchmentPanel>
-        <div className="relative grid min-h-[calc(100vh-74px)] grid-cols-1 lg:grid-cols-[minmax(0,1fr)_44%]">
-          <div className="flex flex-col justify-between px-10 py-14 lg:pl-16">
+        <div className="relative grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_44%]">
+          <div className="flex flex-col justify-between px-5 py-10 sm:px-8 lg:py-14 lg:pl-16">
             <div>
               <PageTitle>Nuestra Historia</PageTitle>
 
-              <div className="mt-10 max-w-[560px] space-y-7 font-body text-[21px] leading-[1.75] text-ink">
+              <div className="mt-10 max-w-[560px] space-y-7 font-body text-[19px] sm:text-[21px] leading-[1.75] text-ink">
                 <p>
                   Mercatum Regni nace en el año 1024, cuando un grupo de comerciantes y
                   artesanos decidieron unir sus fuerzas para ofrecer productos
