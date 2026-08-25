@@ -16,6 +16,7 @@ import {
   createProduct,
   deleteProduct,
   firstImage,
+  isPresentable,
   listProducts,
   updateProduct,
   type Product,
@@ -67,7 +68,7 @@ function TiendaPage() {
   const [notice, setNotice] = useState<string | null>(null);
 
   useEffect(() => {
-    if (data) setItems(data);
+    if (data) setItems(data.filter(isPresentable));
   }, [data]);
 
   const categories = useMemo(
@@ -238,6 +239,9 @@ function TiendaPage() {
                       width={640}
                       height={640}
                       className="aspect-square w-full object-cover"
+                      onError={(e) => {
+                        e.currentTarget.src = IMG.products[i % IMG.products.length]!;
+                      }}
                       style={{ mixBlendMode: "multiply" }}
                     />
                   </div>

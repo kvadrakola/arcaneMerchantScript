@@ -4,7 +4,7 @@ import { PageShell, ParchmentPanel } from "@/components/medieval/PageShell";
 import { InkButton, InkNotice, PageTitle, ParchmentCard, SealDivider } from "@/components/medieval/parts";
 import { HeroCarousel, type HeroItem } from "@/components/medieval/HeroCarousel";
 import { IMG } from "@/components/medieval/assets";
-import { firstImage, listProducts } from "@/lib/platzi";
+import { firstImage, isPresentable, listProducts } from "@/lib/platzi";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -48,8 +48,10 @@ function HomePage() {
     retry: 1,
   });
 
-  const top: HeroItem[] = data
-    ? [...data]
+  const clean = data?.filter(isPresentable) ?? [];
+
+  const top: HeroItem[] = clean.length > 0
+    ? [...clean]
         .sort((a, b) => b.price - a.price)
         .slice(0, 5)
         .map((p, i) => ({
