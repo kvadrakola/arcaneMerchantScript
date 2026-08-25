@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { GoldFleur } from "./Ornament";
 import { InkButton } from "./parts";
+import { IMG } from "./assets";
 
 export interface HeroItem {
   id: number | string;
@@ -45,6 +46,9 @@ export function HeroCarousel({ items }: { items: HeroItem[] }) {
             width={640}
             height={640}
             className="aspect-square w-full object-cover"
+            onError={(e) => {
+              e.currentTarget.src = IMG.products[index % IMG.products.length]!;
+            }}
             style={{ mixBlendMode: "multiply" }}
           />
         </div>
