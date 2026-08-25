@@ -10,6 +10,7 @@ import {
   ParchmentDialog,
   SealDivider,
 } from "@/components/medieval/parts";
+import { IMG } from "@/components/medieval/assets";
 import { createUser, deleteUser, listUsers, updateUser, type User } from "@/lib/platzi";
 
 export const Route = createFileRoute("/usuarios")({
@@ -217,6 +218,9 @@ function UsuariosPage() {
                             loading="lazy"
                             width={48}
                             height={48}
+                            onError={(e) => {
+                              e.currentTarget.src = IMG.seal;
+                            }}
                             className="h-[48px] w-[48px] border border-[oklch(0.34_0.04_55_/_0.6)] object-cover"
                             style={{ filter: "sepia(0.45) contrast(1.05)" }}
                           />
