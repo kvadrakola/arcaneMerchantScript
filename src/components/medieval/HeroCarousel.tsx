@@ -49,7 +49,7 @@ export function HeroCarousel({ items }: { items: HeroItem[] }) {
             onError={(e) => {
               e.currentTarget.src = IMG.products[index % IMG.products.length]!;
             }}
-            style={{ mixBlendMode: "multiply" }}
+            style={{ mixBlendMode: "multiply", filter: "sepia(0.55) contrast(1.05) saturate(0.85)" }}
           />
         </div>
 
