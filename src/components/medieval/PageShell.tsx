@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { SiteNav } from "./SiteNav";
+import { SiteFooter } from "./SiteFooter";
 import { IMG } from "./assets";
 
 export function PageShell({ children }: { children: ReactNode }) {
@@ -13,13 +14,40 @@ export function PageShell({ children }: { children: ReactNode }) {
         backgroundRepeat: "repeat",
       }}
     >
-      <div style={{ backgroundColor: "oklch(0.12 0.01 60 / 0.55)" }}>
+      <div className="flex min-h-screen flex-col" style={{ backgroundColor: "oklch(0.12 0.01 60 / 0.55)" }}>
         <SiteNav />
-        <div className="relative flex min-h-[calc(100vh-74px)] items-stretch">
+        <MobileHeraldry />
+        <div className="relative flex flex-1 items-stretch">
           <LeftRail />
-          <main className="relative flex-1">{children}</main>
+          <main className="relative min-w-0 flex-1">{children}</main>
         </div>
+        <SiteFooter />
       </div>
+    </div>
+  );
+}
+
+/** Slim heraldic band so the identity survives below the lg breakpoint. */
+function MobileHeraldry() {
+  return (
+    <div className="relative flex items-center justify-center gap-6 overflow-hidden py-2 lg:hidden">
+      <img
+        src={IMG.banner}
+        alt="Estandarte con león rampante dorado"
+        width={576}
+        height={1152}
+        className="h-[74px] w-auto"
+        style={{ filter: "drop-shadow(0 8px 14px oklch(0 0 0 / 0.7))" }}
+      />
+      <img
+        src={IMG.lantern}
+        alt="Farol de latón"
+        loading="lazy"
+        width={672}
+        height={992}
+        className="h-[62px] w-auto"
+        style={{ filter: "drop-shadow(0 0 30px oklch(0.78 0.13 74 / 0.45))" }}
+      />
     </div>
   );
 }
@@ -66,7 +94,7 @@ export function ParchmentPanel({
 }) {
   return (
     <section
-      className={`parchment-surface relative min-h-[calc(100vh-74px)] border-l-2 border-[oklch(0.32_0.03_55_/_0.45)] text-ink ${className}`}
+      className={`parchment-surface relative min-h-[calc(100vh-74px)] border-l-0 border-[oklch(0.32_0.03_55_/_0.45)] text-ink lg:border-l-2 ${className}`}
       style={{
         backgroundImage: `url(${IMG.parchment})`,
         backgroundSize: "1600px",
