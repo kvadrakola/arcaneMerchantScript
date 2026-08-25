@@ -242,7 +242,7 @@ function TiendaPage() {
                       onError={(e) => {
                         e.currentTarget.src = IMG.products[i % IMG.products.length]!;
                       }}
-                      style={{ mixBlendMode: "multiply" }}
+                      style={{ mixBlendMode: "multiply", filter: "sepia(0.55) contrast(1.05) saturate(0.85)" }}
                     />
                   </div>
                   <h2 className="mt-4 font-display text-[19px] leading-snug font-bold text-ink">
