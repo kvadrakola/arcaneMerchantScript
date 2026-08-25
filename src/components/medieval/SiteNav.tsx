@@ -25,7 +25,7 @@ export function SiteNav() {
         {/* brand ribbon */}
         <Link
           to="/"
-          className="relative flex h-[80px] w-[260px] shrink-0 items-center justify-center focus-visible:outline-none sm:h-[92px] sm:w-[360px] xl:w-[420px]"
+          className="relative flex h-[68px] w-[190px] shrink-0 items-center justify-center focus-visible:outline-none sm:h-[92px] sm:w-[360px] xl:w-[420px]"
         >
           <img
             src={IMG.ribbon}
@@ -36,7 +36,7 @@ export function SiteNav() {
             style={{ filter: "drop-shadow(0 6px 10px oklch(0 0 0 / 0.6))" }}
           />
           <span
-            className="relative -mt-1 font-display text-[20px] leading-none font-bold tracking-tight text-ink sm:text-[26px] xl:text-[30px]"
+            className="relative -mt-1 font-display text-[15px] leading-none font-bold tracking-tight text-ink sm:text-[26px] xl:text-[30px]"
             style={{ textShadow: "0 1px 0 oklch(1 0 0 / 0.25)" }}
           >
             Mercatum Regni
@@ -82,7 +82,7 @@ export function SiteNav() {
           <button
             type="button"
             aria-label="Carro de la compra"
-            className="gold-frame relative flex h-[46px] w-[50px] items-center justify-center rounded-sm text-gold/85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+            className="gold-frame relative hidden h-[46px] w-[50px] sm:flex items-center justify-center rounded-sm text-gold/85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
           >
             <CartIcon />
             <span className="absolute -top-1.5 -right-1.5 flex h-[18px] w-[18px] items-center justify-center rounded-full bg-destructive font-body text-[11px] text-parchment">
