@@ -79,24 +79,6 @@ export function SiteNav() {
             <WeatherWidget compact />
           </div>
 
-          <button
-            type="button"
-            aria-label="Carro de la compra"
-            className="gold-frame relative hidden h-[46px] w-[50px] sm:flex items-center justify-center rounded-sm text-gold/85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
-          >
-            <CartIcon />
-            <span className="absolute -top-1.5 -right-1.5 flex h-[18px] w-[18px] items-center justify-center rounded-full bg-destructive font-body text-[11px] text-parchment">
-              0
-            </span>
-          </button>
-          <button
-            type="button"
-            aria-label="Cuenta"
-            className="gold-frame hidden h-[46px] w-[50px] items-center justify-center rounded-sm text-gold/85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold sm:flex"
-          >
-            <UserIcon />
-          </button>
-
           {/* mobile / tablet menu toggle */}
           <button
             type="button"
