@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, ParchmentPanel } from "@/components/medieval/PageShell";
-import { InkButton, PageTitle, ParchmentCard, SealDivider } from "@/components/medieval/parts";
+import { InkButton, PageTitle, ParchmentCard, SealDivider, Vellum } from "@/components/medieval/parts";
 import { IMG } from "@/components/medieval/assets";
 
 export const Route = createFileRoute("/vendedores")({
@@ -90,10 +90,12 @@ function VendedoresPage() {
         <div className="px-5 py-10 sm:px-8 lg:px-16 lg:py-14">
           <PageTitle>Vendedores</PageTitle>
 
-          <p className="mx-auto mt-8 max-w-[720px] text-center font-body text-[19px] leading-[1.7] text-ink-soft sm:text-[20px]">
-            Maestros y talleres admitidos por el gremio, con su retrato, su nombre y el
-            juramento registrado en los libros del reino.
-          </p>
+          <Vellum className="mx-auto mt-8 max-w-[720px] text-center font-body text-[19px] leading-[1.7] text-ink-soft sm:text-[20px]">
+            <p>
+              Maestros y talleres admitidos por el gremio, con su retrato, su nombre y el
+              juramento registrado en los libros del reino.
+            </p>
+          </Vellum>
 
           <div className="mt-12 grid grid-cols-1 gap-7 sm:grid-cols-2 xl:grid-cols-3">
             {VENDEDORES.map((v) => (
