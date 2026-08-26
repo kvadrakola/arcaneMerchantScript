@@ -9,6 +9,7 @@ import {
   PageTitle,
   ParchmentDialog,
   SealDivider,
+  Vellum,
 } from "@/components/medieval/parts";
 import { IMG } from "@/components/medieval/assets";
 import { createUser, deleteUser, listUsers, updateUser, type User } from "@/lib/platzi";
@@ -143,10 +144,12 @@ function UsuariosPage() {
         <div className="px-5 py-10 sm:px-8 lg:px-16 lg:py-14">
           <PageTitle>Usuarios</PageTitle>
 
-          <p className="mx-auto mt-8 max-w-[720px] text-center font-body text-[19px] leading-[1.7] text-ink-soft sm:text-[20px]">
-            Libro de registro de los súbditos inscritos en el mercado del reino, copiado del
-            archivo de FakeAPI Platzi.
-          </p>
+          <Vellum className="mx-auto mt-8 max-w-[720px] text-center font-body text-[19px] leading-[1.7] text-ink-soft sm:text-[20px]">
+            <p>
+              Libro de registro de los súbditos inscritos en el mercado del reino, copiado del
+              archivo de FakeAPI Platzi.
+            </p>
+          </Vellum>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <InkButton
