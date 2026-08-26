@@ -133,22 +133,3 @@ function MenuIcon({ open }: { open: boolean }) {
     </svg>
   );
 }
-
-function CartIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
-      <path d="M2 4h3l3.2 10.5h9.3L21 7H6" />
-      <circle cx="9.5" cy="19" r="1.6" />
-      <circle cx="17.5" cy="19" r="1.6" />
-    </svg>
-  );
-}
-
-function UserIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
-      <circle cx="12" cy="8.2" r="3.6" />
-      <path d="M4.8 20c1.2-4 4-5.6 7.2-5.6S18 16 19.2 20" />
-    </svg>
-  );
-}
