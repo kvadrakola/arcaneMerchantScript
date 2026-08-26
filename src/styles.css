@@ -45,8 +45,9 @@
   --night: oklch(0.19 0.012 60);
   --parchment: oklch(0.88 0.045 82);
   --parchment-dark: oklch(0.78 0.055 75);
-  --ink: oklch(0.28 0.035 55);
-  --ink-soft: oklch(0.4 0.03 55);
+  --ink: oklch(0.235 0.038 52);
+  --ink-soft: oklch(0.33 0.034 52);
+  --vellum: oklch(0.905 0.042 84);
   --gold: oklch(0.78 0.11 84);
   --gold-dim: oklch(0.56 0.08 78);
   --wine: oklch(0.36 0.13 26);
@@ -117,4 +118,27 @@
 
 @utility brass-glow {
   text-shadow: 0 0 10px color-mix(in oklab, var(--gold) 40%, transparent);
+}
+
+/* Local text-protection wash: a slightly lighter, more even parchment tone
+   that sits behind text blocks so ink never fights the texture stains.
+   The surrounding parchment texture stays fully visible. */
+@utility vellum-wash {
+  position: absolute;
+  inset: -0.9rem -1.4rem;
+  pointer-events: none;
+  border-radius: 1.5rem;
+  background: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    color-mix(in oklab, var(--vellum) 26%, transparent) 0%,
+    color-mix(in oklab, var(--vellum) 18%, transparent) 62%,
+    color-mix(in oklab, var(--vellum) 6%, transparent) 85%,
+    transparent 100%
+  );
+  filter: blur(30px);
+}
+
+/* Very subtle paper-highlight under glyphs; not a drop shadow. */
+@utility ink-crisp {
+  text-shadow: 0 1px 0 color-mix(in oklab, var(--vellum) 55%, transparent);
 }

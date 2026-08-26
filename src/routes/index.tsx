@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { PageShell, ParchmentPanel } from "@/components/medieval/PageShell";
-import { InkButton, InkNotice, PageTitle, ParchmentCard, SealDivider } from "@/components/medieval/parts";
+import { InkButton, InkNotice, PageTitle, ParchmentCard, SealDivider, Vellum } from "@/components/medieval/parts";
 import { HeroCarousel, type HeroItem } from "@/components/medieval/HeroCarousel";
 import { IMG } from "@/components/medieval/assets";
 import { firstImage, isPresentable, listProducts } from "@/lib/platzi";
@@ -76,9 +76,11 @@ function HomePage() {
               </InkNotice>
             ) : (
               <>
-                <h2 className="mb-5 text-center font-display text-[15px] tracking-[0.2em] uppercase text-ink-soft">
-                  Las cinco mercancías más preciadas
-                </h2>
+                <Vellum className="mb-5">
+                  <h2 className="text-center font-display text-[15px] tracking-[0.2em] uppercase text-ink-soft">
+                    Las cinco mercancías más preciadas
+                  </h2>
+                </Vellum>
                 <HeroCarousel items={top} />
                 {isError && (
                   <p className="mt-4 text-center font-body text-[16px] text-ink-soft italic">
@@ -91,7 +93,7 @@ function HomePage() {
           </div>
 
           <div className="mt-14 grid grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(0,1fr)_46%]">
-            <div className="max-w-[560px] space-y-7 font-body text-[19px] leading-[1.75] sm:text-[21px]">
+            <Vellum className="max-w-[560px] space-y-7 font-body text-[19px] leading-[1.75] text-ink sm:text-[21px]">
               <p>
                 Bienvenido al mercado del reino, donde mercaderes y artesanos exponen sus
                 mejores obras bajo el amparo del gremio.
@@ -108,7 +110,7 @@ function HomePage() {
                   <InkButton variant="outline">Conocer el gremio</InkButton>
                 </Link>
               </div>
-            </div>
+            </Vellum>
 
             <img
               src={IMG.market}

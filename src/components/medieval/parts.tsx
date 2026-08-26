@@ -5,15 +5,35 @@ import { IMG } from "./assets";
 
 export function PageTitle({ children }: { children: ReactNode }) {
   return (
-    <header className="text-center">
+    <header className="relative text-center">
+      <span aria-hidden="true" className="vellum-wash" />
       <h1
-        className="font-display text-[34px] leading-none font-bold text-ink sm:text-[44px] lg:text-[54px]"
-        style={{ textShadow: "0 1px 0 oklch(1 0 0 / 0.3)" }}
+        className="relative font-display text-[34px] leading-none font-bold text-ink sm:text-[44px] lg:text-[54px]"
+        style={{ textShadow: "0 1px 0 oklch(1 0 0 / 0.35)" }}
       >
         {children}
       </h1>
-      <Ornament className="mt-6" />
+      <Ornament className="relative mt-6" />
     </header>
+  );
+}
+
+/**
+ * Wraps a block of text with a soft, local parchment wash so ink stays legible
+ * over the aged texture. The texture remains visible around and through it.
+ */
+export function Vellum({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className="relative">
+      <span aria-hidden="true" className="vellum-wash" />
+      <div className={`relative ink-crisp ${className}`}>{children}</div>
+    </div>
   );
 }
 
