@@ -77,7 +77,7 @@ function HomePage() {
             ) : (
               <>
                 <Vellum className="mb-5">
-                  <h2 className="text-center font-display text-[15px] tracking-[0.2em] uppercase text-ink-soft">
+                  <h2 className="text-center font-display text-[16px] font-semibold tracking-[0.18em] uppercase text-ink">
                     Las cinco mercancías más preciadas
                   </h2>
                 </Vellum>
