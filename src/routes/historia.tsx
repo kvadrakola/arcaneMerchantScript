@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, ParchmentPanel } from "@/components/medieval/PageShell";
-import { PageTitle, SealDivider } from "@/components/medieval/parts";
+import { PageTitle, SealDivider, Vellum } from "@/components/medieval/parts";
 import { IMG } from "@/components/medieval/assets";
 
 export const Route = createFileRoute("/historia")({
@@ -31,7 +31,7 @@ function HistoriaPage() {
             <div>
               <PageTitle>Nuestra Historia</PageTitle>
 
-              <div className="mt-10 max-w-[560px] space-y-7 font-body text-[19px] sm:text-[21px] leading-[1.75] text-ink">
+              <Vellum className="mt-10 max-w-[560px] space-y-7 font-body text-[19px] sm:text-[21px] leading-[1.75] text-ink">
                 <p>
                   Mercatum Regni nace en el año 1024, cuando un grupo de comerciantes y
                   artesanos decidieron unir sus fuerzas para ofrecer productos
@@ -42,7 +42,7 @@ function HistoriaPage() {
                   largo camino para convertirnos en la tienda preferida de miles de clientes.
                 </p>
                 <p>Hoy, seguimos escribiendo nuestra historia contigo.</p>
-              </div>
+              </Vellum>
             </div>
 
             <div className="mt-14">
