@@ -256,7 +256,7 @@ function TiendaPage() {
                     {Math.round(p.price)}{" "}
                     <span className="text-[15px] tracking-wider">monedas de oro</span>
                   </p>
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  {/* <div className="mt-4 flex flex-wrap gap-2">
                     <InkButton>Añadir al carro</InkButton>
                     <InkButton variant="outline" onClick={() => openEdit(p)}>
                       Enmendar
@@ -264,7 +264,7 @@ function TiendaPage() {
                     <InkButton variant="danger" onClick={() => void remove(p)}>
                       Retirar
                     </InkButton>
-                  </div>
+                  </div> */}
                 </ParchmentCard>
               ))}
               {visible.length === 0 && (
