@@ -31,7 +31,7 @@ function HistoriaPage() {
             <div>
               <PageTitle>Nuestra Historia</PageTitle>
 
-              <Vellum className="mt-10 max-w-[560px] space-y-7 text-center font-body text-[19px] sm:text-[21px] leading-[1.75] text-ink">
+              <Vellum className="mx-auto mt-10 max-w-[560px] space-y-7 text-center font-body text-[19px] sm:text-[21px] leading-[1.75] text-ink">
                 <p>
                   Mercatum Regni nace en el año 1024, cuando un grupo de comerciantes y
                   artesanos decidieron unir sus fuerzas para ofrecer productos
