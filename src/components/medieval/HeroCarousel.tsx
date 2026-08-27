@@ -29,7 +29,7 @@ export function HeroCarousel({ items }: { items: HeroItem[] }) {
   return (
     <section
       aria-label="Mercancías más preciadas"
-      className="relative border-2 border-[oklch(0.36_0.04_55_/_0.6)] bg-[oklch(0.85_0.05_80_/_0.7)] p-4 sm:p-6"
+      className="relative mx-auto w-[calc(100%-32px)] border-2 border-[oklch(0.36_0.04_55_/_0.6)] bg-[oklch(0.85_0.05_80_/_0.7)] p-4 sm:w-full sm:max-w-[1000px] sm:p-6"
       style={{
         boxShadow:
           "inset 0 0 40px oklch(0.28 0.035 55 / 0.25), 0 6px 16px oklch(0 0 0 / 0.3)",
