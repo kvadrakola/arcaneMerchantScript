@@ -36,7 +36,7 @@ export function SiteNav() {
             style={{ filter: "drop-shadow(0 6px 10px oklch(0 0 0 / 0.6))" }}
           />
           <span
-            className="relative -mt-1 font-display text-[15px] leading-none font-bold tracking-tight text-ink sm:text-[26px] xl:text-[30px]"
+            className="relative -mt-2 font-display text-[14px] leading-none font-bold tracking-tight text-ink sm:text-[24px] xl:text-[28px]"
             style={{ textShadow: "0 1px 0 oklch(1 0 0 / 0.25)" }}
           >
             Mercatum Regni
