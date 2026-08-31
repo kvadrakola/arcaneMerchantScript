@@ -1,0 +1,5 @@
+.parchment-card {
+  box-shadow:
+    inset 0 0 26px oklch(0.28 0.035 55 / 0.22),
+    0 4px 10px oklch(0 0 0 / 0.25);
+}

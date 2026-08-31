@@ -1,0 +1,5 @@
+.parchment-panel-texture {
+  background-image: var(--parchment-texture);
+  background-size: 1600px;
+  background-repeat: repeat;
+}

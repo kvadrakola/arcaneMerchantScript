@@ -1,0 +1,8 @@
+.history-town-image {
+  mix-blend-mode: multiply;
+  opacity: 0.92;
+}
+
+.history-town-seam {
+  background: linear-gradient(to right, oklch(0.88 0.045 82) 0%, transparent 100%);
+}
