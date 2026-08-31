@@ -50,11 +50,9 @@ export const deleteProduct = (id) => request(`/products/${id}`, { method: "DELET
 
 export const listUsers = (limit = 20) => request(`/users?limit=${limit}`);
 
-export const createUser = (input) =>
-  request(`/users/`, { method: "POST", body: JSON.stringify(input) });
+export const createUser = (input) => request(`/users/`, { method: "POST", data: input });
 
-export const updateUser = (id, input) =>
-  request(`/users/${id}`, { method: "PUT", body: JSON.stringify(input) });
+export const updateUser = (id, input) => request(`/users/${id}`, { method: "PUT", data: input });
 
 export const deleteUser = (id) => request(`/users/${id}`, { method: "DELETE" });
 
