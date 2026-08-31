@@ -58,6 +58,8 @@ function Shop() {
     setCreating(true);
   };
 
+  // Usado por el botón "Enmendar", temporalmente comentado más abajo.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const openEdit = (p) => {
     setForm({
       title: p.title,
@@ -124,6 +126,8 @@ function Shop() {
     setEditing(null);
   };
 
+  // Usado por el botón "Retirar", temporalmente comentado más abajo.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const remove = async (p) => {
     setNotice(null);
     try {
