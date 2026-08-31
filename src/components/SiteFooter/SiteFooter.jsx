@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { AppLink } from "@/components/AppLink/AppLink";
 import { IMG } from "@/assets/assets";
 import { NAV_LINKS } from "@/lib/navLinks";
 import "./SiteFooter.css";

@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { AppLink } from "@/components/AppLink/AppLink";
 import { useQuery } from "@tanstack/react-query";
 import { PageShell } from "@/components/PageShell/PageShell";
 import { ParchmentPanel } from "@/components/ParchmentPanel/ParchmentPanel";

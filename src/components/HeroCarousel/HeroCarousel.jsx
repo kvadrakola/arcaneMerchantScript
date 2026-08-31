@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
-import { GoldFleur } from "@/components/Ornament/Ornament";
+import { AppLink } from "@/components/AppLink/AppLink";
+import { GoldFleur }
 import { InkButton } from "@/components/InkButton/InkButton";
 import { IMG } from "@/assets/assets";
 import "./HeroCarousel.css";

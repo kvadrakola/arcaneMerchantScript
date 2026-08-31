@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { AppLink, AppNavLink } from "@/components/AppLink/AppLink";
 import { IMG } from "@/assets/assets";
 import { GoldFleur } from "@/components/Ornament/Ornament";
 import { WeatherWidget } from "@/components/WeatherWidget/WeatherWidget";
