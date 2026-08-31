@@ -137,11 +137,12 @@ function Shop() {
   };
 
   return (
-    <PageShell heraldryOverlay>
+    <PageShell>
       <section className="shop-hall flex min-h-[calc(100vh-74px)] flex-col">
-        {/* La heráldica es un overlay decorativo: sólo dejamos el hueco visual
-            mínimo a su izquierda, sin reservar una tercera columna. */}
-        <div className="flex-1 px-4 pt-6 pb-10 sm:px-6 lg:pr-10 lg:pl-[124px]">
+        {/* El comercio es de dos columnas: panel de filtros a la izquierda y
+            catálogo a la derecha. La heráldica decorativa vive dentro de la
+            columna de filtros, sin reservar una tercera columna. */}
+        <div className="flex-1 px-4 pt-6 pb-10 sm:px-6 lg:pr-10">
           <h1 className="sr-only">Tienda del reino</h1>
 
           <div className="grid grid-cols-1 gap-7 lg:grid-cols-[236px_minmax(0,1fr)]">
