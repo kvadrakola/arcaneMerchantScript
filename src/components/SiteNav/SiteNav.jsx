@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { AppLink, AppNavLink } from "@/components/AppLink/AppLink";
 import { IMG } from "@/assets/assets";
 import { GoldFleur } from "@/components/Ornament/Ornament";
 import { WeatherWidget } from "@/components/WeatherWidget/WeatherWidget";
@@ -16,7 +16,7 @@ export function SiteNav() {
 
       <div className="relative flex min-h-[74px] items-center gap-3 px-3 sm:px-4">
         {/* brand ribbon */}
-        <Link
+        <AppLink
           to="/"
           className="relative flex h-[68px] w-[190px] shrink-0 items-center justify-center focus-visible:outline-none sm:h-[92px] sm:w-[360px] xl:w-[420px]"
         >
@@ -30,7 +30,7 @@ export function SiteNav() {
           <span className="site-nav-brand relative -mt-2 font-display text-[14px] leading-none font-bold tracking-tight text-ink sm:text-[24px] xl:text-[28px]">
             Mercatum Regni
           </span>
-        </Link>
+        </AppLink>
 
         {/* desktop nav */}
         <nav
@@ -38,13 +38,13 @@ export function SiteNav() {
           className="hidden flex-1 items-center justify-center gap-6 xl:flex"
         >
           {NAV_LINKS.map((l) => (
-            <Link
+            <AppNavLink
               key={l.to}
               to={l.to}
-              activeOptions={{ exact: l.to === "/" }}
+              exact={l.to === "/"}
               className="group relative px-2 py-1 font-body text-[19px] text-parchment/85 transition-colors hover:text-gold focus-visible:text-gold focus-visible:outline-none"
             >
-              {({ isActive }) => (
+              {(isActive) => (
                 <span className="flex items-center gap-2">
                   {isActive && <GoldFleur />}
                   <span className={isActive ? "text-gold brass-glow" : undefined}>{l.label}</span>
@@ -54,7 +54,7 @@ export function SiteNav() {
                   )}
                 </span>
               )}
-            </Link>
+            </AppNavLink>
           ))}
         </nav>
 
@@ -89,16 +89,16 @@ export function SiteNav() {
           <ul className="flex flex-col py-2">
             {NAV_LINKS.map((l) => (
               <li key={l.to}>
-                <Link
+                <AppNavLink
                   to={l.to}
-                  activeOptions={{ exact: l.to === "/" }}
+                  exact={l.to === "/"}
                   onClick={() => setOpen(false)}
-                  activeProps={{ className: "text-gold brass-glow" }}
+                  activeClassName="text-gold brass-glow"
                   className="flex items-center gap-2 px-6 py-3 font-body text-[19px] text-parchment/85 transition-colors hover:text-gold focus-visible:text-gold focus-visible:outline-none"
                 >
                   <GoldFleur />
                   {l.label}
-                </Link>
+                </AppNavLink>
               </li>
             ))}
           </ul>
