@@ -24,7 +24,7 @@ export function PageShell({ children, heraldryOverlay = false }) {
         <div className="relative flex flex-1 items-stretch">
           {heraldryOverlay ? (
             <div
-              className="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-[300px] lg:block"
+              className="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-[180px] lg:block"
               aria-hidden="true"
             >
               <LeftRail decorative />
@@ -70,7 +70,9 @@ function LeftRail({ decorative = false }) {
   return (
     <aside
       className={
-        decorative ? "relative h-full w-[300px]" : "relative hidden w-[300px] shrink-0 lg:block"
+        decorative
+          ? "page-shell-rail--slim relative h-full w-[300px]"
+          : "relative hidden w-[300px] shrink-0 lg:block"
       }
     >
       <img
