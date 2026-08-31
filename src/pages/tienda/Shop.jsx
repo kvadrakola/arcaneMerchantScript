@@ -231,12 +231,12 @@ function Shop() {
 /** Ornamental band above the grid. */
 function CatalogueHeading() {
   return (
-    <div className="relative flex items-center gap-4">
-      <Ornament className="flex-1 opacity-70" />
+    <div className="shop-heading relative flex items-center gap-4">
+      <Ornament className="flex-1" />
       <h2 className="shrink-0 font-display text-[19px] tracking-[0.08em] whitespace-nowrap text-parchment sm:text-[22px]">
         Todos los productos
       </h2>
-      <Ornament className="flex-1 opacity-70" />
+      <Ornament className="flex-1" />
     </div>
   );
 }

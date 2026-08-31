@@ -94,3 +94,18 @@
 }
 
 
+
+/* La cinta ornamental se dibuja en tinta oscura; sobre piedra la pasamos a oro. */
+.shop-heading .ink-rule {
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in oklab, var(--gold) 55%, transparent) 25%,
+    color-mix(in oklab, var(--gold) 55%, transparent) 75%,
+    transparent
+  );
+}
+
+.shop-heading svg {
+  color: color-mix(in oklab, var(--gold) 75%, transparent);
+}
