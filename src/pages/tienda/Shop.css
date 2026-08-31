@@ -1,44 +1,94 @@
-/* Page-specific treatment for the shop catalogue: dark stone hall, gold-framed
-   sidebar and a wooden counter beneath the product grid. */
+/* Page-specific treatment for the shop catalogue: one continuous stone hall
+   (the texture comes from the shared page shell), a medieval merchant filter
+   panel, metalwork product frames and a wooden counter beneath the grid. */
 
-.shop-surface {
-  background-color: oklch(0.17 0.012 58);
-  background-image: var(--shop-stone);
-  background-size: 720px;
-  background-repeat: repeat;
+/* Sólo una viñeta suave: el muro de piedra lo pinta el shell, así el fondo
+   se lee como un único interior sin bandas verticales. */
+.shop-hall {
+  background-image: radial-gradient(
+    120% 90% at 50% 0%,
+    oklch(0 0 0 / 0) 40%,
+    oklch(0 0 0 / 0.32) 100%
+  );
 }
 
-.shop-surface-overlay {
-  background-color: oklch(0.11 0.01 58 / 0.62);
-}
+/* ---------- Panel de filtros del mercader ---------- */
 
-.shop-sidebar {
-  background-color: oklch(0.15 0.012 58 / 0.86);
+.shop-panel {
+  background-color: oklch(0.19 0.026 52 / 0.94);
+  background-image: linear-gradient(
+    to bottom,
+    oklch(0.23 0.03 52 / 0.9),
+    oklch(0.15 0.02 48 / 0.95)
+  );
+  border: 1px solid color-mix(in oklab, var(--gold) 42%, transparent);
   box-shadow:
-    0 0 0 1px oklch(0 0 0 / 0.6),
-    inset 0 0 26px oklch(0 0 0 / 0.55);
+    inset 0 0 0 1px oklch(0 0 0 / 0.65),
+    inset 0 0 28px oklch(0 0 0 / 0.5),
+    0 10px 24px -14px oklch(0 0 0 / 0.85);
 }
 
-/* Small brass corner marks on the sidebar frame. */
-.shop-sidebar-corner {
-  border-color: color-mix(in oklab, var(--gold) 55%, transparent);
+.shop-panel-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* Escuadras de bronce discretas en el marco del panel. */
+.shop-panel-corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  pointer-events: none;
+  border-color: color-mix(in oklab, var(--gold) 70%, transparent);
+}
+
+.shop-panel-corner--tl {
+  top: 5px;
+  left: 5px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+
+.shop-panel-corner--tr {
+  top: 5px;
+  right: 5px;
+  border-top: 1px solid;
+  border-right: 1px solid;
+}
+
+.shop-panel-corner--bl {
+  bottom: 5px;
+  left: 5px;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+}
+
+.shop-panel-corner--br {
+  right: 5px;
+  bottom: 5px;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
 }
 
 .shop-category {
   font-family: var(--font-body);
   font-size: 17px;
-  color: oklch(0.82 0.02 80 / 0.82);
+  color: oklch(0.86 0.03 82 / 0.8);
   text-align: left;
-  padding: 0.22rem 0;
+  padding: 0.24rem 0;
   transition: color 140ms ease;
 }
 
-.shop-category:hover {
+.shop-category:hover,
+.shop-category[aria-pressed="true"] {
   color: var(--gold);
 }
 
 .shop-category[aria-pressed="true"] {
-  color: var(--gold);
+  text-shadow: 0 0 12px oklch(0.78 0.13 74 / 0.35);
 }
 
 .shop-category:focus-visible {
@@ -46,65 +96,122 @@
   outline-offset: 2px;
 }
 
-.shop-card {
-  background-color: oklch(0.82 0.05 80 / 0.9);
-  background-image: var(--shop-parchment);
-  background-size: 900px;
-  border: 1px solid color-mix(in oklab, var(--gold) 30%, transparent);
-  box-shadow:
-    0 0 0 1px oklch(0 0 0 / 0.6),
-    0 10px 20px -10px oklch(0 0 0 / 0.8);
-}
+/* ---------- Botones del panel en tono bronce ---------- */
 
-.shop-card-media {
-  background-color: oklch(0.2 0.01 60);
-  border-bottom: 1px solid color-mix(in oklab, var(--gold) 22%, transparent);
-}
-
-.shop-counter {
-  background:
-    linear-gradient(to bottom, oklch(0.26 0.03 52) 0%, oklch(0.19 0.025 48) 42%, oklch(0.13 0.02 46) 100%);
-  box-shadow:
-    inset 0 2px 0 oklch(0.42 0.05 60 / 0.5),
-    0 -12px 24px -8px oklch(0 0 0 / 0.7);
-}
-
-/* Contraste de los controles del rail sobre piedra oscura. */
-.shop-sidebar .ink-button--outline {
-  border-color: color-mix(in oklab, var(--gold) 45%, transparent);
+.shop-panel .ink-button--solid {
+  border-color: color-mix(in oklab, var(--gold) 55%, transparent);
+  background-image: linear-gradient(
+    to bottom,
+    oklch(0.36 0.045 58),
+    oklch(0.24 0.035 50)
+  );
+  background-color: transparent;
   color: var(--gold);
+  box-shadow: inset 0 1px 0 oklch(0.6 0.06 70 / 0.28);
 }
 
-.shop-sidebar .ink-button--outline:hover {
+.shop-panel .ink-button--solid:hover {
+  background-image: linear-gradient(
+    to bottom,
+    oklch(0.42 0.05 58),
+    oklch(0.28 0.04 50)
+  );
+}
+
+.shop-panel .ink-button--outline {
+  border-color: color-mix(in oklab, var(--gold) 40%, transparent);
+  color: color-mix(in oklab, var(--gold) 88%, white);
+}
+
+.shop-panel .ink-button--outline:hover {
   background-color: color-mix(in oklab, var(--gold) 12%, transparent);
 }
 
-.shop-sidebar .ink-button:focus-visible,
+.shop-panel .ink-button:focus-visible,
 .shop-card-title:focus-visible {
   outline-color: var(--gold-dim);
 }
 
-/* Franja de pergamino más clara y uniforme para el nombre y el precio. */
-.shop-card-body {
+/* ---------- Marcos de metalistería de las fichas ---------- */
+
+.shop-card {
+  position: relative;
+  padding: 5px;
   background-image: linear-gradient(
-    to bottom,
-    oklch(0.93 0.035 84),
-    oklch(0.87 0.042 82)
+    155deg,
+    oklch(0.62 0.09 78),
+    oklch(0.36 0.05 62) 42%,
+    oklch(0.24 0.03 54) 70%,
+    oklch(0.52 0.08 76)
   );
+  box-shadow:
+    0 0 0 1px oklch(0.08 0.01 50),
+    inset 0 0 0 1px oklch(0.78 0.11 76 / 0.35),
+    0 14px 26px -14px oklch(0 0 0 / 0.85);
 }
 
+/* Filete interior fino y superficie de pergamino envejecido. */
+.shop-card-inner {
+  height: 100%;
+  outline: 1px solid oklch(0.08 0.01 50 / 0.85);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--gold) 45%, transparent);
+  background-color: oklch(0.88 0.045 84);
+  background-image: var(--shop-parchment);
+  background-size: 900px;
+  overflow: hidden;
+}
 
+.shop-card-media {
+  background-color: oklch(0.2 0.01 60);
+  border-bottom: 1px solid color-mix(in oklab, var(--gold) 30%, transparent);
+}
 
-/* Cinta ornamental dorada del encabezado del catálogo. */
+.shop-card-media img {
+  filter: sepia(0.16) contrast(1.04) saturate(0.94);
+}
+
+/* Franja de pergamino más clara y uniforme para el nombre y el precio. */
+.shop-card-body {
+  background-image: linear-gradient(to bottom, oklch(0.93 0.035 84), oklch(0.87 0.042 82));
+  box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.35);
+}
+
+.shop-card-price {
+  color: oklch(0.34 0.05 46);
+}
+
+/* ---------- Encabezado ornamental ---------- */
+
 .shop-heading-line {
   background: linear-gradient(
     to right,
-    color-mix(in oklab, var(--gold) 12%, transparent),
-    color-mix(in oklab, var(--gold) 55%, transparent)
+    color-mix(in oklab, var(--gold) 10%, transparent),
+    color-mix(in oklab, var(--gold) 60%, transparent)
   );
 }
 
-.shop-heading-arrow {
-  color: color-mix(in oklab, var(--gold) 70%, transparent);
+.shop-heading-finial {
+  color: color-mix(in oklab, var(--gold) 78%, transparent);
   flex-shrink: 0;
+}
+
+/* ---------- Mostrador de madera ---------- */
+
+.shop-counter {
+  background:
+    repeating-linear-gradient(
+      to right,
+      oklch(0 0 0 / 0.16) 0 1px,
+      transparent 1px 128px
+    ),
+    linear-gradient(
+      to bottom,
+      oklch(0.34 0.045 56) 0%,
+      oklch(0.25 0.035 50) 34%,
+      oklch(0.17 0.025 46) 100%
+    );
+  border-top: 2px solid color-mix(in oklab, var(--gold) 32%, transparent);
+  box-shadow:
+    inset 0 3px 0 oklch(0.48 0.06 62 / 0.45),
+    0 -14px 28px -10px oklch(0 0 0 / 0.75);
 }
