@@ -11,6 +11,7 @@ import { Vellum } from "@/components/Vellum/Vellum";
 import { HeroCarousel } from "@/components/HeroCarousel/HeroCarousel";
 import { IMG } from "@/assets/assets";
 import { firstImage, isPresentable, listProducts } from "@/lib/platzi";
+import "./Home.css";
 
 const VIRTUDES = [
   { t: "Honor", d: "Cada trato se cierra con palabra dada y sello de cera." },
@@ -117,8 +118,7 @@ function Home() {
               alt="Grabado de un puesto de mercado medieval"
               width={1024}
               height={768}
-              className="w-full border-2 border-[oklch(0.36_0.04_55_/_0.55)]"
-              style={{ mixBlendMode: "multiply", opacity: 0.95 }}
+              className="home-market-image w-full border-2 border-[oklch(0.36_0.04_55_/_0.55)]"
             />
           </div>
 
