@@ -19,14 +19,7 @@ export function AppLink({ to, className, onClick, "aria-label": ariaLabel, child
  * - `children` may also be a function receiving `isActive` for custom
  *   active rendering; in react-router this maps to NavLink's className/render state.
  */
-export function AppNavLink({
-  to,
-  className,
-  activeClassName,
-  exact = false,
-  onClick,
-  children,
-}) {
+export function AppNavLink({ to, className, activeClassName, exact = false, onClick, children }) {
   return (
     <Link
       to={to}
