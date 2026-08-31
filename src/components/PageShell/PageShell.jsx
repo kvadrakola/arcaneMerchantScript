@@ -42,7 +42,6 @@ export function PageShell({ children, heraldryOverlay = false }) {
   );
 }
 
-
 /** Slim heraldic band so the identity survives below the lg breakpoint. */
 function MobileHeraldry() {
   return (
@@ -71,9 +70,7 @@ function LeftRail({ decorative = false }) {
   return (
     <aside
       className={
-        decorative
-          ? "relative h-full w-[300px]"
-          : "relative hidden w-[300px] shrink-0 lg:block"
+        decorative ? "relative h-full w-[300px]" : "relative hidden w-[300px] shrink-0 lg:block"
       }
     >
       <img
@@ -95,4 +92,3 @@ function LeftRail({ decorative = false }) {
     </aside>
   );
 }
-
