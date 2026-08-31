@@ -2,6 +2,7 @@
  * Open-Meteo current weather (no API key required).
  * Docs: https://open-meteo.com/en/docs
  */
+import { http } from "./http";
 
 export const DEFAULT_PLACE = { name: "Sevilla", latitude: 37.3891, longitude: -5.9845 };
 
@@ -55,9 +56,9 @@ export async function fetchCurrentWeather(latitude, longitude, place) {
   const url =
     `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}` +
     `&current=temperature_2m,weather_code,is_day&timezone=auto`;
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`Open-Meteo ${res.status}`);
-  const json = await res.json();
+  const res = await http.get(url);
+  if (res.status < 200 || res.status >= 300) throw new Error(`Open-Meteo ${res.status}`);
+  const json = JSON.parse(res.data);
 
   const code = json.current.weather_code;
   return {

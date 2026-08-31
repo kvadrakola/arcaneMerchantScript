@@ -3,20 +3,24 @@
  * Docs: https://fakeapi.platzi.com/en/rest/products/ and /users/
  * Base URL: https://api.escuelajs.co/api/v1
  */
+import { http } from "./http";
 
 export const PLATZI_BASE = "https://api.escuelajs.co/api/v1";
 
-async function request(path, init) {
-  const res = await fetch(`${PLATZI_BASE}${path}`, {
-    ...init,
-    headers: { "Content-Type": "application/json", ...(init?.headers ?? {}) },
+async function request(path, { method = "GET", data, headers } = {}) {
+  const res = await http.request({
+    baseURL: PLATZI_BASE,
+    url: path,
+    method,
+    data,
+    headers: { "Content-Type": "application/json", ...(headers ?? {}) },
   });
-  if (!res.ok) {
-    const body = await res.text().catch(() => "");
+  if (res.status < 200 || res.status >= 300) {
+    const body = typeof res.data === "string" ? res.data : "";
     throw new Error(`FakeAPI ${res.status}: ${body.slice(0, 180) || res.statusText}`);
   }
   if (res.status === 204) return undefined;
-  return await res.json();
+  return JSON.parse(res.data);
 }
 
 /** Some API records carry broken placeholder image URLs; normalise them. */
@@ -36,11 +40,10 @@ export const listProducts = (limit = 40) => request(`/products?offset=0&limit=${
 
 export const listCategories = () => request(`/categories?limit=12`);
 
-export const createProduct = (input) =>
-  request(`/products/`, { method: "POST", body: JSON.stringify(input) });
+export const createProduct = (input) => request(`/products/`, { method: "POST", data: input });
 
 export const updateProduct = (id, input) =>
-  request(`/products/${id}`, { method: "PUT", body: JSON.stringify(input) });
+  request(`/products/${id}`, { method: "PUT", data: input });
 
 export const deleteProduct = (id) => request(`/products/${id}`, { method: "DELETE" });
 
@@ -48,11 +51,9 @@ export const deleteProduct = (id) => request(`/products/${id}`, { method: "DELET
 
 export const listUsers = (limit = 20) => request(`/users?limit=${limit}`);
 
-export const createUser = (input) =>
-  request(`/users/`, { method: "POST", body: JSON.stringify(input) });
+export const createUser = (input) => request(`/users/`, { method: "POST", data: input });
 
-export const updateUser = (id, input) =>
-  request(`/users/${id}`, { method: "PUT", body: JSON.stringify(input) });
+export const updateUser = (id, input) => request(`/users/${id}`, { method: "PUT", data: input });
 
 export const deleteUser = (id) => request(`/users/${id}`, { method: "DELETE" });
 
