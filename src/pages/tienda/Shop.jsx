@@ -258,7 +258,6 @@ function HeadingArrow() {
   );
 }
 
-
 /** Left rail with the category list and the catalogue controls. */
 function CatalogueSidebar({
   categories,
