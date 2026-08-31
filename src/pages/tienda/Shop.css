@@ -95,17 +95,16 @@
 
 
 
-/* La cinta ornamental se dibuja en tinta oscura; sobre piedra la pasamos a oro. */
-.shop-heading .ink-rule {
+/* Cinta ornamental dorada del encabezado del catálogo. */
+.shop-heading-line {
   background: linear-gradient(
     to right,
-    transparent,
-    color-mix(in oklab, var(--gold) 55%, transparent) 25%,
-    color-mix(in oklab, var(--gold) 55%, transparent) 75%,
-    transparent
+    color-mix(in oklab, var(--gold) 12%, transparent),
+    color-mix(in oklab, var(--gold) 55%, transparent)
   );
 }
 
-.shop-heading svg {
-  color: color-mix(in oklab, var(--gold) 75%, transparent);
+.shop-heading-arrow {
+  color: color-mix(in oklab, var(--gold) 70%, transparent);
+  flex-shrink: 0;
 }
