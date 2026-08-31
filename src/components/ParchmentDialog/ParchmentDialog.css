@@ -1,0 +1,10 @@
+.parchment-dialog-backdrop {
+  background-color: oklch(0.08 0.01 60 / 0.72);
+}
+
+.parchment-dialog-surface {
+  background-color: oklch(0.88 0.045 82);
+  background-image: var(--parchment-texture);
+  background-size: 1200px;
+  box-shadow: 0 18px 50px oklch(0 0 0 / 0.7);
+}
