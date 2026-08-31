@@ -319,8 +319,8 @@ function ProductCard({ product, fallbackIndex }) {
           }}
         />
       </div>
-      <div className="flex flex-1 flex-col justify-between px-3 py-2.5">
-        <h3 className="font-display text-[15px] leading-snug font-semibold text-ink">
+      <div className="shop-card-body flex flex-1 flex-col justify-between px-3 py-2.5">
+        <h3 className="shop-card-title font-display text-[15px] leading-snug font-semibold text-ink">
           {product.title}
         </h3>
         <p className="mt-1.5 font-body text-[16px] text-ink-soft">
