@@ -1,4 +1,4 @@
-export function Ornament({ className = "" }                        ) {
+export function Ornament({ className = "" }) {
   return (
     <div className={`flex items-center justify-center gap-3 ${className}`}>
       <span className="ink-rule w-full max-w-[220px] flex-1" />
@@ -28,7 +28,7 @@ export function Ornament({ className = "" }                        ) {
   );
 }
 
-export function GoldFleur({ className = "" }                        ) {
+export function GoldFleur({ className = "" }) {
   return (
     <svg
       width="12"
@@ -37,11 +37,7 @@ export function GoldFleur({ className = "" }                        ) {
       className={`text-gold ${className}`}
       aria-hidden="true"
     >
-      <path
-        d="M6 0.5 7 5 11.5 6 7 7 6 11.5 5 7 0.5 6 5 5Z"
-        fill="currentColor"
-        opacity="0.85"
-      />
+      <path d="M6 0.5 7 5 11.5 6 7 7 6 11.5 5 7 0.5 6 5 5Z" fill="currentColor" opacity="0.85" />
     </svg>
   );
 }

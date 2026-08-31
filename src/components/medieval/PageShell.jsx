@@ -1,9 +1,8 @@
-
 import { SiteNav } from "./SiteNav";
 import { SiteFooter } from "./SiteFooter";
 import { IMG } from "./assets";
 
-export function PageShell({ children }                         ) {
+export function PageShell({ children }) {
   return (
     <div
       className="min-h-screen w-full"
@@ -14,7 +13,10 @@ export function PageShell({ children }                         ) {
         backgroundRepeat: "repeat",
       }}
     >
-      <div className="flex min-h-screen flex-col" style={{ backgroundColor: "oklch(0.12 0.01 60 / 0.55)" }}>
+      <div
+        className="flex min-h-screen flex-col"
+        style={{ backgroundColor: "oklch(0.12 0.01 60 / 0.55)" }}
+      >
         <SiteNav />
         <MobileHeraldry />
         <div className="relative flex flex-1 items-stretch">
@@ -76,8 +78,7 @@ function LeftRail() {
       <span
         className="pointer-events-none absolute top-[470px] left-[10px] h-[220px] w-[220px] rounded-full"
         style={{
-          background:
-            "radial-gradient(circle, oklch(0.8 0.13 74 / 0.22) 0%, transparent 70%)",
+          background: "radial-gradient(circle, oklch(0.8 0.13 74 / 0.22) 0%, transparent 70%)",
         }}
       />
     </aside>
@@ -85,12 +86,7 @@ function LeftRail() {
 }
 
 /** Aged parchment panel used as the main content surface on every page. */
-export function ParchmentPanel({
-  children,
-  className = "",
-}
-
- ) {
+export function ParchmentPanel({ children, className = "" }) {
   return (
     <section
       className={`parchment-surface relative min-h-[calc(100vh-74px)] border-l-0 border-[oklch(0.32_0.03_55_/_0.45)] text-ink lg:border-l-2 ${className}`}
