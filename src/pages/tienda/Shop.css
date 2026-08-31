@@ -102,6 +102,12 @@
 
 /* ---------- Botones del panel en tono bronce ---------- */
 
+.shop-panel .ink-button {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  font-size: 14px;
+}
+
 .shop-panel .ink-button--solid {
   border-color: color-mix(in oklab, var(--gold) 55%, transparent);
   background-image: linear-gradient(
