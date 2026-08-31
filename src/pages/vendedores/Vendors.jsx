@@ -90,7 +90,9 @@ function Vendors() {
                     <h2 className="font-display text-[22px] leading-tight font-bold text-ink">
                       {vendor.master}
                     </h2>
-                    <p className="mt-1 font-body text-[18px] text-ink-soft italic">{vendor.craft}</p>
+                    <p className="mt-1 font-body text-[18px] text-ink-soft italic">
+                      {vendor.craft}
+                    </p>
                     <p className="mt-2 flex items-center gap-2 font-display text-[13px] tracking-[0.14em] uppercase text-ink">
                       <Crest />
                       {vendor.workshop}

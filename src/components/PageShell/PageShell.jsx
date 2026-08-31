@@ -5,10 +5,7 @@ import "./PageShell.css";
 
 export function PageShell({ children }) {
   return (
-    <div
-      className="page-shell min-h-dvh w-full"
-      style={{ "--stone-texture": `url(${IMG.stone})` }}
-    >
+    <div className="page-shell min-h-dvh w-full" style={{ "--stone-texture": `url(${IMG.stone})` }}>
       <div className="page-shell-overlay flex min-h-dvh flex-col">
         {/* Keyboard users can jump straight to the page content. */}
         <a
@@ -28,7 +25,6 @@ export function PageShell({ children }) {
         <SiteFooter />
       </div>
     </div>
-
   );
 }
 

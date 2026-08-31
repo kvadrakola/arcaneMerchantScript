@@ -22,9 +22,7 @@ export function ParchmentDialog({ open, title, onClose, children }) {
   useEffect(() => {
     if (!open) return;
     lastFocusedRef.current = document.activeElement;
-    const focusable = surfaceRef.current?.querySelector(
-      "input, textarea, select, button, [href]",
-    );
+    const focusable = surfaceRef.current?.querySelector("input, textarea, select, button, [href]");
     focusable?.focus();
     return () => {
       const previous = lastFocusedRef.current;
