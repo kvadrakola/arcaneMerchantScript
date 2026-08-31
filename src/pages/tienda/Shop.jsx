@@ -284,7 +284,7 @@ function CatalogueSidebar({
 
 
       <nav aria-label="Categorías">
-        <h2 className="font-display text-[17px] tracking-[0.1em] text-parchment">Categorías</h2>
+        <h2 className="shop-panel-title">Categorías</h2>
         <div className="mt-3 flex flex-col">
           {categories.map((c) => (
             <button
@@ -301,7 +301,7 @@ function CatalogueSidebar({
       </nav>
 
       <div className="mt-7">
-        <h2 className="font-display text-[17px] tracking-[0.1em] text-parchment">Buscar</h2>
+        <h2 className="shop-panel-title">Buscar</h2>
         <label className="sr-only" htmlFor="buscar">
           Buscar mercancía
         </label>
@@ -322,6 +322,7 @@ function CatalogueSidebar({
     </aside>
   );
 }
+
 
 /** Single catalogue entry: engraved image over a parchment name/price strip. */
 function ProductCard({ product, fallbackIndex }) {
