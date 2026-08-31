@@ -1,0 +1,22 @@
+.site-nav-wood-bar {
+  background-color: oklch(0.16 0.01 60);
+  background-image: linear-gradient(
+    180deg,
+    oklch(0.22 0.015 60) 0%,
+    oklch(0.14 0.01 60) 55%,
+    oklch(0.1 0.008 60) 100%
+  );
+  box-shadow: 0 6px 18px oklch(0 0 0 / 0.7);
+}
+
+.site-nav-ribbon {
+  filter: drop-shadow(0 6px 10px oklch(0 0 0 / 0.6));
+}
+
+.site-nav-brand {
+  text-shadow: 0 1px 0 oklch(1 0 0 / 0.25);
+}
+
+.site-nav-mobile-menu {
+  background-color: oklch(0.13 0.01 60 / 0.97);
+}
