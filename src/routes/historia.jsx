@@ -33,13 +33,13 @@ function HistoriaPage() {
 
               <Vellum className="mx-auto mt-10 max-w-[560px] space-y-7 text-center font-body text-[19px] sm:text-[21px] leading-[1.75] text-ink">
                 <p>
-                  Mercatum Regni nace en el año 1024, cuando un grupo de comerciantes y
-                  artesanos decidieron unir sus fuerzas para ofrecer productos
-                  extraordinarios a todo el reino.
+                  Mercatum Regni nace en el año 1024, cuando un grupo de comerciantes y artesanos
+                  decidieron unir sus fuerzas para ofrecer productos extraordinarios a todo el
+                  reino.
                 </p>
                 <p>
-                  Inspirados por los valores de honor, calidad y confianza, hemos recorrido un
-                  largo camino para convertirnos en la tienda preferida de miles de clientes.
+                  Inspirados por los valores de honor, calidad y confianza, hemos recorrido un largo
+                  camino para convertirnos en la tienda preferida de miles de clientes.
                 </p>
                 <p>Hoy, seguimos escribiendo nuestra historia contigo.</p>
               </Vellum>
@@ -62,8 +62,7 @@ function HistoriaPage() {
             <span
               className="pointer-events-none absolute inset-y-0 left-0 w-40"
               style={{
-                background:
-                  "linear-gradient(to right, oklch(0.88 0.045 82) 0%, transparent 100%)",
+                background: "linear-gradient(to right, oklch(0.88 0.045 82) 0%, transparent 100%)",
               }}
             />
           </div>

@@ -1,6 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, ParchmentPanel } from "@/components/medieval/PageShell";
-import { InkButton, PageTitle, ParchmentCard, SealDivider, Vellum } from "@/components/medieval/parts";
+import {
+  InkButton,
+  PageTitle,
+  ParchmentCard,
+  SealDivider,
+  Vellum,
+} from "@/components/medieval/parts";
 import { IMG } from "@/components/medieval/assets";
 
 export const Route = createFileRoute("/vendedores")({
@@ -22,24 +28,15 @@ export const Route = createFileRoute("/vendedores")({
   component: VendedoresPage,
 });
 
-interface Vendedor {
-  nombre: string;
-  maestro: string;
-  oficio: string;
-  villa: string;
-  admitido: number;
-  retrato: string;
-}
-
 /** Portraits reuse the guild's own engravings so no image can break. */
-const VENDEDORES: Vendedor[] = [
+const VENDEDORES = [
   {
     nombre: "Casa Ferrata",
     maestro: "Beatriz Ferrata",
     oficio: "Maestra herrera",
     villa: "Villa de Aldoria",
     admitido: 1031,
-    retrato: IMG.products[0]!,
+    retrato: IMG.products[0],
   },
   {
     nombre: "Scriptorium Aureum",
@@ -47,7 +44,7 @@ const VENDEDORES: Vendedor[] = [
     oficio: "Escriba e iluminador",
     villa: "Burgo de Valmar",
     admitido: 1044,
-    retrato: IMG.products[2]!,
+    retrato: IMG.products[2],
   },
   {
     nombre: "Botica de Sant Roc",
@@ -55,7 +52,7 @@ const VENDEDORES: Vendedor[] = [
     oficio: "Boticaria",
     villa: "Puerto de Mirena",
     admitido: 1052,
-    retrato: IMG.products[3]!,
+    retrato: IMG.products[3],
   },
   {
     nombre: "Taller Corvina",
@@ -63,7 +60,7 @@ const VENDEDORES: Vendedor[] = [
     oficio: "Talabartero",
     villa: "Villa de Aldoria",
     admitido: 1057,
-    retrato: IMG.products[1]!,
+    retrato: IMG.products[1],
   },
   {
     nombre: "Fundición Ordoño",
@@ -92,8 +89,8 @@ function VendedoresPage() {
 
           <Vellum className="mx-auto mt-8 max-w-[720px] text-center font-body text-[19px] leading-[1.7] text-ink-soft sm:text-[20px]">
             <p>
-              Maestros y talleres admitidos por el gremio, con su retrato, su nombre y el
-              juramento registrado en los libros del reino.
+              Maestros y talleres admitidos por el gremio, con su retrato, su nombre y el juramento
+              registrado en los libros del reino.
             </p>
           </Vellum>
 
@@ -150,8 +147,19 @@ function VendedoresPage() {
 
 function Crest() {
   return (
-    <svg width="18" height="21" viewBox="0 0 40 46" className="shrink-0 text-ink/70" aria-hidden="true">
-      <path d="M2 2h36v24c0 10-9 15-18 18C11 41 2 36 2 26V2z" fill="none" stroke="currentColor" strokeWidth="2" />
+    <svg
+      width="18"
+      height="21"
+      viewBox="0 0 40 46"
+      className="shrink-0 text-ink/70"
+      aria-hidden="true"
+    >
+      <path
+        d="M2 2h36v24c0 10-9 15-18 18C11 41 2 36 2 26V2z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      />
       <path d="M20 20l4 5-4 5-4-5z" fill="currentColor" opacity=".65" />
     </svg>
   );
