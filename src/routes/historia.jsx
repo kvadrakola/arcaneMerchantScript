@@ -37,7 +37,7 @@ function HistoriaPage() {
                   artesanos decidieron unir sus fuerzas para ofrecer productos
                   extraordinarios a todo el reino.
                 </p>
-
+                <p>
                   Inspirados por los valores de honor, calidad y confianza, hemos recorrido un
                   largo camino para convertirnos en la tienda preferida de miles de clientes.
                 </p>
