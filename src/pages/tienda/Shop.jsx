@@ -278,48 +278,50 @@ function CatalogueSidebar({
   onReload,
 }) {
   return (
-    <aside className="shop-panel relative h-fit px-5 py-6">
-      <span className="shop-panel-corner shop-panel-corner--tl" aria-hidden="true" />
-      <span className="shop-panel-corner shop-panel-corner--tr" aria-hidden="true" />
-      <span className="shop-panel-corner shop-panel-corner--bl" aria-hidden="true" />
-      <span className="shop-panel-corner shop-panel-corner--br" aria-hidden="true" />
+    <>
+      <aside className="shop-panel relative h-fit px-5 py-6">
+        <span className="shop-panel-corner shop-panel-corner--tl" aria-hidden="true" />
+        <span className="shop-panel-corner shop-panel-corner--tr" aria-hidden="true" />
+        <span className="shop-panel-corner shop-panel-corner--bl" aria-hidden="true" />
+        <span className="shop-panel-corner shop-panel-corner--br" aria-hidden="true" />
 
-      <nav aria-label="Categorías">
-        <h2 className="shop-panel-title">Categorías</h2>
-        <div className="mt-3 flex flex-col">
-          {categories.map((c) => (
-            <button
-              key={c}
-              type="button"
-              className="shop-category"
-              aria-pressed={category === c}
-              onClick={() => onCategory(c)}
-            >
-              {c}
-            </button>
-          ))}
-        </div>
-      </nav>
+        <nav aria-label="Categorías">
+          <h2 className="shop-panel-title">Categorías</h2>
+          <div className="mt-3 flex flex-col">
+            {categories.map((c) => (
+              <button
+                key={c}
+                type="button"
+                className="shop-category"
+                aria-pressed={category === c}
+                onClick={() => onCategory(c)}
+              >
+                {c}
+              </button>
+            ))}
+          </div>
+        </nav>
 
-      <div className="mt-7">
-        <h2 className="shop-panel-title">Buscar</h2>
-        <label className="sr-only" htmlFor="buscar">
-          Buscar mercancía
-        </label>
-        <input
-          id="buscar"
-          value={search}
-          onChange={(e) => onSearch(e.target.value)}
-          placeholder="Buscar mercancía…"
-          className="ledger-control mt-3 w-full"
-        />
-        <div className="mt-4 flex flex-col gap-3">
-          <InkButton onClick={onCreate}>Inscribir mercancía</InkButton>
-          <InkButton variant="outline" onClick={onReload}>
-            Recargar
-          </InkButton>
+        <div className="mt-7">
+          <h2 className="shop-panel-title">Buscar</h2>
+          <label className="sr-only" htmlFor="buscar">
+            Buscar mercancía
+          </label>
+          <input
+            id="buscar"
+            value={search}
+            onChange={(e) => onSearch(e.target.value)}
+            placeholder="Buscar mercancía…"
+            className="ledger-control mt-3 w-full"
+          />
+          <div className="mt-4 flex flex-col gap-3">
+            <InkButton onClick={onCreate}>Inscribir mercancía</InkButton>
+            <InkButton variant="outline" onClick={onReload}>
+              Recargar
+            </InkButton>
+          </div>
         </div>
-      </div>
+      </aside>
 
       {/* Heráldica decorativa que pertenece a la columna de filtros. */}
       <div className="shop-heraldry hidden lg:flex" aria-hidden="true">
@@ -333,7 +335,7 @@ function CatalogueSidebar({
           className="shop-heraldry-lantern"
         />
       </div>
-    </aside>
+    </>
   );
 }
 
