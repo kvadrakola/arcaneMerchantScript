@@ -4,6 +4,7 @@ import { IMG } from "@/assets/assets";
 import { GoldFleur } from "@/components/Ornament/Ornament";
 import { WeatherWidget } from "@/components/WeatherWidget/WeatherWidget";
 import { NAV_LINKS } from "@/lib/navLinks";
+import "./SiteNav.css";
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
@@ -11,15 +12,7 @@ export function SiteNav() {
   return (
     <header className="relative z-30 w-full">
       {/* dark wooden bar */}
-      <div
-        className="absolute inset-0 border-b-2 border-black/70"
-        style={{
-          backgroundColor: "oklch(0.16 0.01 60)",
-          backgroundImage:
-            "linear-gradient(180deg, oklch(0.22 0.015 60) 0%, oklch(0.14 0.01 60) 55%, oklch(0.1 0.008 60) 100%)",
-          boxShadow: "0 6px 18px oklch(0 0 0 / 0.7)",
-        }}
-      />
+      <div className="site-nav-wood-bar absolute inset-0 border-b-2 border-black/70" />
 
       <div className="relative flex min-h-[74px] items-center gap-3 px-3 sm:px-4">
         {/* brand ribbon */}
@@ -32,13 +25,9 @@ export function SiteNav() {
             alt=""
             width={1152}
             height={576}
-            className="absolute inset-0 h-full w-full object-fill"
-            style={{ filter: "drop-shadow(0 6px 10px oklch(0 0 0 / 0.6))" }}
+            className="site-nav-ribbon absolute inset-0 h-full w-full object-fill"
           />
-          <span
-            className="relative -mt-2 font-display text-[14px] leading-none font-bold tracking-tight text-ink sm:text-[24px] xl:text-[28px]"
-            style={{ textShadow: "0 1px 0 oklch(1 0 0 / 0.25)" }}
-          >
+          <span className="site-nav-brand relative -mt-2 font-display text-[14px] leading-none font-bold tracking-tight text-ink sm:text-[24px] xl:text-[28px]">
             Mercatum Regni
           </span>
         </Link>
@@ -95,8 +84,7 @@ export function SiteNav() {
         <nav
           id="menu-gremio"
           aria-label="Navegación del gremio"
-          className="relative border-y-2 border-black/60 xl:hidden"
-          style={{ backgroundColor: "oklch(0.13 0.01 60 / 0.97)" }}
+          className="site-nav-mobile-menu relative border-y-2 border-black/60 xl:hidden"
         >
           <ul className="flex flex-col py-2">
             {NAV_LINKS.map((l) => (
