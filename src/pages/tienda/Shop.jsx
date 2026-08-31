@@ -4,7 +4,6 @@ import { PageShell } from "@/components/PageShell/PageShell";
 import { InkButton } from "@/components/InkButton/InkButton";
 import { InkField } from "@/components/InkField/InkField";
 import { InkNotice } from "@/components/InkNotice/InkNotice";
-import { Ornament } from "@/components/Ornament/Ornament";
 import { ParchmentDialog } from "@/components/ParchmentDialog/ParchmentDialog";
 import { IMG } from "@/assets/assets";
 import {
