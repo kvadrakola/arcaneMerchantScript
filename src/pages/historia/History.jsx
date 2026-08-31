@@ -4,6 +4,7 @@ import { PageTitle } from "@/components/PageTitle/PageTitle";
 import { SealDivider } from "@/components/SealDivider/SealDivider";
 import { Vellum } from "@/components/Vellum/Vellum";
 import { IMG } from "@/assets/assets";
+import "./History.css";
 
 function History() {
   return (
@@ -39,15 +40,9 @@ function History() {
               alt="Grabado de una villa medieval con su castillo"
               width={1280}
               height={1024}
-              className="h-full w-full object-cover"
-              style={{ mixBlendMode: "multiply", opacity: 0.92 }}
+              className="history-town-image h-full w-full object-cover"
             />
-            <span
-              className="pointer-events-none absolute inset-y-0 left-0 w-40"
-              style={{
-                background: "linear-gradient(to right, oklch(0.88 0.045 82) 0%, transparent 100%)",
-              }}
-            />
+            <span className="history-town-seam pointer-events-none absolute inset-y-0 left-0 w-40" />
           </div>
         </div>
       </ParchmentPanel>

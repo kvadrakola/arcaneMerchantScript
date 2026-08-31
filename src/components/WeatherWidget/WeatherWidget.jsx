@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { DEFAULT_PLACE, fetchCurrentWeather, weatherGlyph } from "@/lib/weather";
+import "./WeatherWidget.css";
 
 const REFRESH_MS = 10 * 60 * 1000;
 
@@ -61,8 +62,7 @@ export function WeatherWidget({ compact = false }) {
 
   return (
     <div
-      className="gold-frame flex items-center gap-3 rounded-sm px-3 py-1.5"
-      style={{ backgroundColor: "oklch(0.12 0.01 60 / 0.55)" }}
+      className="weather-widget gold-frame flex items-center gap-3 rounded-sm px-3 py-1.5"
       aria-live="polite"
     >
       <span className="text-gold/85">

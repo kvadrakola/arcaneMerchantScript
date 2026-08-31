@@ -11,6 +11,7 @@ import { SealDivider } from "@/components/SealDivider/SealDivider";
 import { Vellum } from "@/components/Vellum/Vellum";
 import { IMG } from "@/assets/assets";
 import { createUser, deleteUser, listUsers, updateUser } from "@/lib/platzi";
+import "./Users.css";
 
 const EMPTY = {
   name: "",
@@ -157,10 +158,7 @@ function Users() {
           )}
 
           {items.length > 0 && (
-            <div
-              className="mt-12 border-2 border-[oklch(0.36_0.04_55_/_0.55)] bg-[oklch(0.86_0.05_80_/_0.6)] p-1.5"
-              style={{ boxShadow: "inset 0 0 26px oklch(0.28 0.035 55 / 0.22)" }}
-            >
+            <div className="users-table-frame mt-12 border-2 border-[oklch(0.36_0.04_55_/_0.55)] bg-[oklch(0.86_0.05_80_/_0.6)] p-1.5">
               <div className="overflow-x-auto">
                 <table className="w-full min-w-[760px] border-collapse font-body text-[19px] text-ink">
                   <caption className="sr-only">Registro de súbditos del mercado</caption>
@@ -195,8 +193,7 @@ function Users() {
                             onError={(e) => {
                               e.currentTarget.src = IMG.seal;
                             }}
-                            className="h-[48px] w-[48px] border border-[oklch(0.34_0.04_55_/_0.6)] object-cover"
-                            style={{ filter: "sepia(0.45) contrast(1.05)" }}
+                            className="users-avatar h-[48px] w-[48px] border border-[oklch(0.34_0.04_55_/_0.6)] object-cover"
                           />
                         </td>
                         <td className="px-5 py-3.5">{u.name}</td>
@@ -295,7 +292,7 @@ function UserDialog({ open, title, form, setForm, busy, showPassword, onClose, o
             onChange={(e) =>
               setForm({ ...form, role: e.target.value === "admin" ? "admin" : "customer" })
             }
-            className="mt-1.5 w-full border border-[oklch(0.34_0.04_55_/_0.6)] bg-[oklch(0.92_0.04_84_/_0.7)] px-3 py-2 font-body text-[17px] text-ink focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[oklch(0.3_0.03_55)]"
+            className="ledger-control mt-1.5 w-full"
           >
             <option value="customer">Súbdito</option>
             <option value="admin">Mayordomo del reino</option>

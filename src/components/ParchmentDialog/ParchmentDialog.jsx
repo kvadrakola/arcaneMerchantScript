@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Ornament } from "@/components/Ornament/Ornament";
 import { IMG } from "@/assets/assets";
+import "./ParchmentDialog.css";
 
 /** Parchment modal used for every CRUD form. */
 export function ParchmentDialog({ open, title, onClose, children }) {
@@ -17,20 +18,14 @@ export function ParchmentDialog({ open, title, onClose, children }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto p-4 py-10"
-      style={{ backgroundColor: "oklch(0.08 0.01 60 / 0.72)" }}
+      className="parchment-dialog-backdrop fixed inset-0 z-50 flex items-start justify-center overflow-y-auto p-4 py-10"
       role="dialog"
       aria-modal="true"
       aria-label={title}
     >
       <div
-        className="relative w-full max-w-[560px] border-2 border-[oklch(0.36_0.04_55_/_0.7)] p-7"
-        style={{
-          backgroundColor: "oklch(0.88 0.045 82)",
-          backgroundImage: `url(${IMG.parchment})`,
-          backgroundSize: "1200px",
-          boxShadow: "0 18px 50px oklch(0 0 0 / 0.7)",
-        }}
+        className="parchment-dialog-surface relative w-full max-w-[560px] border-2 border-[oklch(0.36_0.04_55_/_0.7)] p-7"
+        style={{ "--parchment-texture": `url(${IMG.parchment})` }}
       >
         <span className="pointer-events-none absolute inset-[6px] border border-[oklch(0.36_0.04_55_/_0.35)]" />
         <div className="relative">

@@ -142,3 +142,24 @@
 @utility ink-crisp {
   text-shadow: 0 1px 0 color-mix(in oklab, var(--vellum) 55%, transparent);
 }
+
+/* Shared ledger control styling used by page filters and CRUD forms. */
+@utility ledger-control {
+  border: 1px solid oklch(0.34 0.04 55 / 0.6);
+  background-color: oklch(0.92 0.04 84 / 0.7);
+  padding: 0.5rem 0.75rem;
+  font-family: var(--font-body);
+  font-size: 17px;
+  color: var(--color-ink);
+
+  &:focus-visible {
+    outline: 2px solid oklch(0.3 0.03 55);
+    outline-offset: 1px;
+  }
+}
+
+/* Shared aged-engraving treatment for product imagery. */
+@utility engraved-image {
+  mix-blend-mode: multiply;
+  filter: sepia(0.55) contrast(1.05) saturate(0.85);
+}
