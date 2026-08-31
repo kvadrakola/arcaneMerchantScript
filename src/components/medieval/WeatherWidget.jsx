@@ -1,10 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  DEFAULT_PLACE,
-  fetchCurrentWeather,
-  weatherGlyph,
-
-} from "@/lib/weather";
+import { DEFAULT_PLACE, fetchCurrentWeather, weatherGlyph } from "@/lib/weather";
 
 const REFRESH_MS = 10 * 60 * 1000;
 
@@ -12,16 +7,14 @@ const REFRESH_MS = 10 * 60 * 1000;
  * Header widget: local clock + current temperature and condition (Open-Meteo).
  * Uses browser geolocation when granted, otherwise Sevilla.
  */
-export function WeatherWidget({ compact = false }                       ) {
-  const [clock, setClock] = useState               (null);
-  const [weather, setWeather] = useState                       (null);
+export function WeatherWidget({ compact = false }) {
+  const [clock, setClock] = useState(null);
+  const [weather, setWeather] = useState(null);
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     const tick = () =>
-      setClock(
-        new Date().toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" }),
-      );
+      setClock(new Date().toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" }));
     tick();
     const id = setInterval(tick, 15_000);
     return () => clearInterval(id);
@@ -29,9 +22,9 @@ export function WeatherWidget({ compact = false }                       ) {
 
   useEffect(() => {
     let cancelled = false;
-    let timer                                            ;
+    let timer;
 
-    const load = async (lat        , lon        , place        ) => {
+    const load = async (lat, lon, place) => {
       try {
         const data = await fetchCurrentWeather(lat, lon, place);
         if (!cancelled) {
@@ -43,7 +36,7 @@ export function WeatherWidget({ compact = false }                       ) {
       }
     };
 
-    const start = (lat        , lon        , place        ) => {
+    const start = (lat, lon, place) => {
       void load(lat, lon, place);
       timer = setInterval(() => void load(lat, lon, place), REFRESH_MS);
     };
@@ -64,7 +57,7 @@ export function WeatherWidget({ compact = false }                       ) {
     };
   }, []);
 
-  const glyph               = weather ? weatherGlyph(weather.code, weather.isDay) : "cloud";
+  const glyph = weather ? weatherGlyph(weather.code, weather.isDay) : "cloud";
 
   return (
     <div
@@ -96,7 +89,7 @@ export function WeatherWidget({ compact = false }                       ) {
   );
 }
 
-function SkyGlyph({ glyph }                         ) {
+function SkyGlyph({ glyph }) {
   const common = {
     width: 22,
     height: 22,
@@ -104,7 +97,7 @@ function SkyGlyph({ glyph }                         ) {
     fill: "none",
     stroke: "currentColor",
     strokeWidth: 1.3,
-    "aria-hidden": true         ,
+    "aria-hidden": true,
   };
   switch (glyph) {
     case "sun":

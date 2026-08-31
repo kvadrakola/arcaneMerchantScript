@@ -1,9 +1,8 @@
-
 import { useEffect } from "react";
 import { Ornament } from "./Ornament";
 import { IMG } from "./assets";
 
-export function PageTitle({ children }                         ) {
+export function PageTitle({ children }) {
   return (
     <header className="relative text-center">
       <span aria-hidden="true" className="vellum-wash" />
@@ -22,12 +21,7 @@ export function PageTitle({ children }                         ) {
  * Wraps a block of text with a soft, local parchment wash so ink stays legible
  * over the aged texture. The texture remains visible around and through it.
  */
-export function Vellum({
-  children,
-  className = "",
-}
-
- ) {
+export function Vellum({ children, className = "" }) {
   return (
     <div className="relative">
       <span aria-hidden="true" className="vellum-wash" />
@@ -60,18 +54,12 @@ export function SealDivider() {
   );
 }
 
-export function ParchmentCard({
-  children,
-  className = "",
-}
-
- ) {
+export function ParchmentCard({ children, className = "" }) {
   return (
     <article
       className={`relative border-2 border-[oklch(0.36_0.04_55_/_0.55)] bg-[oklch(0.85_0.05_80_/_0.75)] p-5 ${className}`}
       style={{
-        boxShadow:
-          "inset 0 0 26px oklch(0.28 0.035 55 / 0.22), 0 4px 10px oklch(0 0 0 / 0.25)",
+        boxShadow: "inset 0 0 26px oklch(0.28 0.035 55 / 0.22), 0 4px 10px oklch(0 0 0 / 0.25)",
       }}
     >
       <span className="pointer-events-none absolute inset-[5px] border border-[oklch(0.36_0.04_55_/_0.35)]" />
@@ -91,9 +79,7 @@ export function InkButton({
   disabled,
   className = "",
   "aria-label": ariaLabel,
-}
-
- ) {
+}) {
   const skin =
     variant === "solid"
       ? "border-[oklch(0.3_0.03_55)] bg-accent text-parchment hover:bg-[oklch(0.31_0.12_26)]"
@@ -114,13 +100,7 @@ export function InkButton({
 }
 
 /** Loading / error / empty notice rendered as an ink note on parchment. */
-export function InkNotice({
-  tone = "info",
-  title,
-  children,
-}
-
- ) {
+export function InkNotice({ tone = "info", title, children }) {
   return (
     <div
       role={tone === "error" ? "alert" : "status"}
@@ -139,17 +119,10 @@ export function InkNotice({
 }
 
 /** Parchment modal used for every CRUD form. */
-export function ParchmentDialog({
-  open,
-  title,
-  onClose,
-  children,
-}
-
- ) {
+export function ParchmentDialog({ open, title, onClose, children }) {
   useEffect(() => {
     if (!open) return;
-    const onKey = (e               ) => {
+    const onKey = (e) => {
       if (e.key === "Escape") onClose();
     };
     document.addEventListener("keydown", onKey);
@@ -195,16 +168,7 @@ export function ParchmentDialog({
 }
 
 /** Labelled input in the ledger style. */
-export function InkField({
-  label,
-  value,
-  onChange,
-  type = "text",
-  required,
-  textarea,
-}
-
- ) {
+export function InkField({ label, value, onChange, type = "text", required, textarea }) {
   const id = `f-${label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
   const cls =
     "mt-1.5 w-full border border-[oklch(0.34_0.04_55_/_0.6)] bg-[oklch(0.92_0.04_84_/_0.7)] px-3 py-2 font-body text-[17px] text-ink focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[oklch(0.3_0.03_55)]";

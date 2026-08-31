@@ -12,7 +12,7 @@ import {
   Vellum,
 } from "@/components/medieval/parts";
 import { IMG } from "@/components/medieval/assets";
-import { createUser, deleteUser, listUsers, updateUser,           } from "@/lib/platzi";
+import { createUser, deleteUser, listUsers, updateUser } from "@/lib/platzi";
 
 export const Route = createFileRoute("/usuarios")({
   head: () => ({
@@ -33,7 +33,7 @@ export const Route = createFileRoute("/usuarios")({
   component: UsuariosPage,
 });
 
-const EMPTY            = {
+const EMPTY = {
   name: "",
   email: "",
   password: "",
@@ -41,7 +41,7 @@ const EMPTY            = {
   avatar: "https://i.pravatar.cc/150?img=12",
 };
 
-const RANGO                         = { admin: "Mayordomo del reino", customer: "Súbdito" };
+const RANGO = { admin: "Mayordomo del reino", customer: "Súbdito" };
 
 function UsuariosPage() {
   const { data, isPending, isError, error, refetch } = useQuery({
@@ -51,18 +51,18 @@ function UsuariosPage() {
     retry: 1,
   });
 
-  const [items, setItems] = useState        ([]);
+  const [items, setItems] = useState([]);
   const [creating, setCreating] = useState(false);
-  const [editing, setEditing] = useState             (null);
-  const [form, setForm] = useState           (EMPTY);
+  const [editing, setEditing] = useState(null);
+  const [form, setForm] = useState(EMPTY);
   const [busy, setBusy] = useState(false);
-  const [notice, setNotice] = useState               (null);
+  const [notice, setNotice] = useState(null);
 
   useEffect(() => {
     if (data) setItems(data);
   }, [data]);
 
-  const openEdit = (u      ) => {
+  const openEdit = (u) => {
     setForm({
       name: u.name,
       email: u.email,
@@ -102,7 +102,7 @@ function UsuariosPage() {
     if (!editing) return;
     setBusy(true);
     setNotice(null);
-    const patch                     = {
+    const patch = {
       name: form.name,
       email: form.email,
       role: form.role,
@@ -119,7 +119,7 @@ function UsuariosPage() {
     setEditing(null);
   };
 
-  const remove = async (u      ) => {
+  const remove = async (u) => {
     setNotice(null);
     try {
       await deleteUser(u.id);
@@ -172,7 +172,7 @@ function UsuariosPage() {
           {isError && items.length === 0 && (
             <div className="mt-12">
               <InkNotice tone="error" title="El archivo no responde">
-                {(error         )?.message ?? "No se pudo consultar el registro remoto."}
+                {error?.message ?? "No se pudo consultar el registro remoto."}
               </InkNotice>
             </div>
           )}
@@ -272,18 +272,7 @@ function UsuariosPage() {
   );
 }
 
-function UserDialog({
-  open,
-  title,
-  form,
-  setForm,
-  busy,
-  showPassword,
-  onClose,
-  onSubmit,
-}
-
- ) {
+function UserDialog({ open, title, form, setForm, busy, showPassword, onClose, onSubmit }) {
   return (
     <ParchmentDialog open={open} title={title} onClose={onClose}>
       <form
