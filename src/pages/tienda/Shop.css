@@ -33,9 +33,10 @@
 
 .shop-panel-title {
   font-family: var(--font-display);
-  font-size: 17px;
+  font-size: 19px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  text-align: center;
   color: var(--gold);
 }
 
@@ -78,10 +79,10 @@
 
 .shop-category {
   font-family: var(--font-body);
-  font-size: 17px;
+  font-size: 18px;
   color: oklch(0.86 0.03 82 / 0.8);
-  text-align: left;
-  padding: 0.24rem 0;
+  text-align: center;
+  padding: 0.32rem 0;
   transition: color 140ms ease;
 }
 
@@ -100,6 +101,12 @@
 }
 
 /* ---------- Botones del panel en tono bronce ---------- */
+
+.shop-panel .ink-button {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  font-size: 14px;
+}
 
 .shop-panel .ink-button--solid {
   border-color: color-mix(in oklab, var(--gold) 55%, transparent);
