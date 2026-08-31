@@ -276,11 +276,12 @@ function CatalogueSidebar({
   onReload,
 }) {
   return (
-    <aside className="shop-sidebar relative h-fit px-5 py-6">
-      <span className="shop-sidebar-corner pointer-events-none absolute top-2 left-2 h-4 w-4 border-t border-l" />
-      <span className="shop-sidebar-corner pointer-events-none absolute top-2 right-2 h-4 w-4 border-t border-r" />
-      <span className="shop-sidebar-corner pointer-events-none absolute bottom-2 left-2 h-4 w-4 border-b border-l" />
-      <span className="shop-sidebar-corner pointer-events-none absolute right-2 bottom-2 h-4 w-4 border-b border-r" />
+    <aside className="shop-panel relative h-fit px-5 py-6">
+      <span className="shop-panel-corner shop-panel-corner--tl" aria-hidden="true" />
+      <span className="shop-panel-corner shop-panel-corner--tr" aria-hidden="true" />
+      <span className="shop-panel-corner shop-panel-corner--bl" aria-hidden="true" />
+      <span className="shop-panel-corner shop-panel-corner--br" aria-hidden="true" />
+
 
       <nav aria-label="Categorías">
         <h2 className="font-display text-[17px] tracking-[0.1em] text-parchment">Categorías</h2>
