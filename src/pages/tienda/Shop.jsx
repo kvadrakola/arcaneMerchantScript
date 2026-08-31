@@ -324,35 +324,37 @@ function CatalogueSidebar({
 }
 
 
-/** Single catalogue entry: engraved image over a parchment name/price strip. */
+/** Single catalogue entry framed like medieval metalwork over parchment. */
 function ProductCard({ product, fallbackIndex }) {
   const fallback = IMG.products[fallbackIndex % IMG.products.length];
   return (
     <article
-      className="shop-card flex flex-col overflow-hidden"
+      className="shop-card"
       style={{ "--shop-parchment": `url(${IMG.parchment})` }}
     >
-      <div className="shop-card-media">
-        <img
-          src={firstImage(product.images, fallback)}
-          alt={product.title}
-          loading="lazy"
-          width={640}
-          height={640}
-          className="aspect-[4/3] w-full object-cover"
-          onError={(e) => {
-            e.currentTarget.src = fallback;
-          }}
-        />
-      </div>
-      <div className="shop-card-body flex min-h-[72px] flex-1 flex-col justify-between px-3 py-2.5">
-        <h3 className="shop-card-title line-clamp-2 font-display text-[15px] leading-snug font-semibold text-ink">
-          {product.title}
-        </h3>
-        <p className="mt-1.5 font-body text-[16px] text-ink-soft">
-          {Math.round(product.price)}{" "}
-          <span className="text-[13px] tracking-wider">monedas de oro</span>
-        </p>
+      <div className="shop-card-inner flex flex-col">
+        <div className="shop-card-media">
+          <img
+            src={firstImage(product.images, fallback)}
+            alt={product.title}
+            loading="lazy"
+            width={640}
+            height={640}
+            className="aspect-[4/3] w-full object-cover"
+            onError={(e) => {
+              e.currentTarget.src = fallback;
+            }}
+          />
+        </div>
+        <div className="shop-card-body flex min-h-[76px] flex-1 flex-col justify-between px-3 py-2.5">
+          <h3 className="shop-card-title line-clamp-2 font-display text-[15px] leading-snug font-semibold text-ink">
+            {product.title}
+          </h3>
+          <p className="shop-card-price mt-1.5 font-body text-[16px]">
+            {Math.round(product.price)}{" "}
+            <span className="text-[13px] tracking-wider">monedas de oro</span>
+          </p>
+        </div>
       </div>
       {/* Acciones CRUD temporalmente ocultas (sin carrito en el proyecto).
       <div className="flex flex-wrap gap-2 px-3 pb-3">
@@ -360,6 +362,7 @@ function ProductCard({ product, fallbackIndex }) {
         <InkButton variant="danger" onClick={() => void remove(product)}>Retirar</InkButton>
       </div> */}
     </article>
+
   );
 }
 
