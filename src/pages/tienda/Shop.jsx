@@ -228,18 +228,37 @@ function Shop() {
   );
 }
 
-/** Ornamental band above the grid. */
+/** Ornamental gold band above the grid, as in the reference design. */
 function CatalogueHeading() {
   return (
     <div className="shop-heading relative flex items-center gap-4">
-      <Ornament className="flex-1" />
+      <HeadingRule flip />
       <h2 className="shrink-0 font-display text-[19px] tracking-[0.08em] whitespace-nowrap text-parchment sm:text-[22px]">
         Todos los productos
       </h2>
-      <Ornament className="flex-1" />
+      <HeadingRule />
     </div>
   );
 }
+
+function HeadingRule({ flip = false }) {
+  return (
+    <span className="flex min-w-0 flex-1 items-center gap-2" aria-hidden="true">
+      {flip && <HeadingArrow />}
+      <span className="shop-heading-line h-px flex-1" />
+      {!flip && <HeadingArrow />}
+    </span>
+  );
+}
+
+function HeadingArrow() {
+  return (
+    <svg width="26" height="10" viewBox="0 0 26 10" fill="none" className="shop-heading-arrow">
+      <path d="M1 5h24M6 1l-4 4 4 4M20 1l4 4-4 4" stroke="currentColor" strokeWidth="1" />
+    </svg>
+  );
+}
+
 
 /** Left rail with the category list and the catalogue controls. */
 function CatalogueSidebar({
