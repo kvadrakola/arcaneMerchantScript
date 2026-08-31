@@ -278,7 +278,7 @@ function CatalogueSidebar({
   onReload,
 }) {
   return (
-    <>
+    <div className="shop-sidebar flex flex-col">
       <aside className="shop-panel relative h-fit px-5 py-6">
         <span className="shop-panel-corner shop-panel-corner--tl" aria-hidden="true" />
         <span className="shop-panel-corner shop-panel-corner--tr" aria-hidden="true" />
@@ -335,7 +335,7 @@ function CatalogueSidebar({
           className="shop-heraldry-lantern"
         />
       </div>
-    </>
+    </div>
   );
 }
 
