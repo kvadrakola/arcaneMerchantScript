@@ -137,72 +137,67 @@ function Shop() {
   };
 
   return (
-    <PageShell>
-      <section
-        className="shop-surface min-h-[calc(100vh-74px)]"
-        style={{ "--shop-stone": `url(${IMG.stone})` }}
-      >
-        <div className="shop-surface-overlay flex min-h-[calc(100vh-74px)] flex-col">
-          <div className="flex-1 px-4 pt-6 pb-10 sm:px-6 lg:px-10">
-            <h1 className="sr-only">Tienda del reino</h1>
+    <PageShell heraldryOverlay>
+      <section className="shop-hall flex min-h-[calc(100vh-74px)] flex-col">
+        <div className="flex-1 px-4 pt-6 pb-10 sm:px-6 lg:pr-10 lg:pl-[270px]">
+          <h1 className="sr-only">Tienda del reino</h1>
 
-            <div className="grid grid-cols-1 gap-7 lg:grid-cols-[248px_minmax(0,1fr)]">
-              <CatalogueSidebar
-                categories={categories}
-                category={category}
-                onCategory={setCategory}
-                search={search}
-                onSearch={setSearch}
-                onCreate={openCreate}
-                onReload={() => void refetch()}
-              />
+          <div className="grid grid-cols-1 gap-7 lg:grid-cols-[236px_minmax(0,1fr)]">
+            <CatalogueSidebar
+              categories={categories}
+              category={category}
+              onCategory={setCategory}
+              search={search}
+              onSearch={setSearch}
+              onCreate={openCreate}
+              onReload={() => void refetch()}
+            />
 
-              <div className="min-w-0">
-                <CatalogueHeading />
+            <div className="min-w-0">
+              <CatalogueHeading />
 
-                {notice && (
-                  <div className="mt-6" role="status">
-                    <InkNotice title="Aviso del escribano">{notice}</InkNotice>
-                  </div>
-                )}
+              {notice && (
+                <div className="mt-6" role="status">
+                  <InkNotice title="Aviso del escribano">{notice}</InkNotice>
+                </div>
+              )}
 
-                {isPending && (
-                  <div className="mt-8">
-                    <InkNotice title="Abriendo el catálogo">
-                      El escribano copia las mercancías del mercado…
-                    </InkNotice>
-                  </div>
-                )}
+              {isPending && (
+                <div className="mt-8">
+                  <InkNotice title="Abriendo el catálogo">
+                    El escribano copia las mercancías del mercado…
+                  </InkNotice>
+                </div>
+              )}
 
-                {isError && items.length === 0 && (
-                  <div className="mt-8">
-                    <InkNotice tone="error" title="El mercado no responde">
-                      {error?.message ?? "No se pudo consultar el catálogo remoto."}
-                    </InkNotice>
-                  </div>
-                )}
+              {isError && items.length === 0 && (
+                <div className="mt-8">
+                  <InkNotice tone="error" title="El mercado no responde">
+                    {error?.message ?? "No se pudo consultar el catálogo remoto."}
+                  </InkNotice>
+                </div>
+              )}
 
-                {items.length > 0 && (
-                  <div className="mt-6 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
-                    {visibleProducts.map((p, i) => (
-                      <ProductCard key={p.id} product={p} fallbackIndex={i} />
-                    ))}
-                    {visibleProducts.length === 0 && (
-                      <div className="col-span-2 lg:col-span-3 xl:col-span-4">
-                        <InkNotice title="Sin mercancías">
-                          Ninguna mercancía coincide con la búsqueda.
-                        </InkNotice>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
+              {items.length > 0 && (
+                <div className="mt-6 grid grid-cols-2 gap-5 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
+                  {visibleProducts.map((p, i) => (
+                    <ProductCard key={p.id} product={p} fallbackIndex={i} />
+                  ))}
+                  {visibleProducts.length === 0 && (
+                    <div className="col-span-2 lg:col-span-3 xl:col-span-4">
+                      <InkNotice title="Sin mercancías">
+                        Ninguna mercancía coincide con la búsqueda.
+                      </InkNotice>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
-
-          {/* Mostrador de madera bajo el catálogo, como en el diseño del reino. */}
-          <div className="shop-counter h-[120px] w-full sm:h-[150px]" aria-hidden="true" />
         </div>
+
+        {/* Mostrador de madera bajo el catálogo, como en el diseño del reino. */}
+        <div className="shop-counter h-[128px] w-full sm:h-[162px]" aria-hidden="true" />
       </section>
 
       <ProductDialog
@@ -227,12 +222,12 @@ function Shop() {
   );
 }
 
-/** Ornamental gold band above the grid, as in the reference design. */
+/** Ornamental rule with medieval finials above the product grid. */
 function CatalogueHeading() {
   return (
     <div className="shop-heading relative flex items-center gap-4">
       <HeadingRule flip />
-      <h2 className="shrink-0 font-display text-[19px] tracking-[0.08em] whitespace-nowrap text-parchment sm:text-[22px]">
+      <h2 className="shrink-0 font-display text-[19px] tracking-[0.14em] whitespace-nowrap text-parchment uppercase sm:text-[22px]">
         Todos los productos
       </h2>
       <HeadingRule />
@@ -243,17 +238,28 @@ function CatalogueHeading() {
 function HeadingRule({ flip = false }) {
   return (
     <span className="flex min-w-0 flex-1 items-center gap-2" aria-hidden="true">
-      {flip && <HeadingArrow />}
+      {flip && <HeadingFinial flip />}
       <span className="shop-heading-line h-px flex-1" />
-      {!flip && <HeadingArrow />}
+      {!flip && <HeadingFinial />}
     </span>
   );
 }
 
-function HeadingArrow() {
+/** Small diamond finial with a tapering bar, in place of arrow glyphs. */
+function HeadingFinial({ flip = false }) {
   return (
-    <svg width="26" height="10" viewBox="0 0 26 10" fill="none" className="shop-heading-arrow">
-      <path d="M1 5h24M6 1l-4 4 4 4M20 1l4 4-4 4" stroke="currentColor" strokeWidth="1" />
+    <svg
+      width="42"
+      height="12"
+      viewBox="0 0 42 12"
+      fill="none"
+      className="shop-heading-finial"
+      style={flip ? { transform: "scaleX(-1)" } : undefined}
+    >
+      <path d="M0 6h20" stroke="currentColor" strokeWidth="1" />
+      <path d="M26 1.5 30.5 6 26 10.5 21.5 6z" fill="currentColor" opacity="0.85" />
+      <path d="M35 3.5 37.5 6 35 8.5 32.5 6z" fill="currentColor" opacity="0.6" />
+      <path d="M39.5 4.5 41.5 6l-2 1.5z" fill="currentColor" opacity="0.4" />
     </svg>
   );
 }
@@ -269,14 +275,14 @@ function CatalogueSidebar({
   onReload,
 }) {
   return (
-    <aside className="shop-sidebar relative h-fit px-5 py-6">
-      <span className="shop-sidebar-corner pointer-events-none absolute top-2 left-2 h-4 w-4 border-t border-l" />
-      <span className="shop-sidebar-corner pointer-events-none absolute top-2 right-2 h-4 w-4 border-t border-r" />
-      <span className="shop-sidebar-corner pointer-events-none absolute bottom-2 left-2 h-4 w-4 border-b border-l" />
-      <span className="shop-sidebar-corner pointer-events-none absolute right-2 bottom-2 h-4 w-4 border-b border-r" />
+    <aside className="shop-panel relative h-fit px-5 py-6">
+      <span className="shop-panel-corner shop-panel-corner--tl" aria-hidden="true" />
+      <span className="shop-panel-corner shop-panel-corner--tr" aria-hidden="true" />
+      <span className="shop-panel-corner shop-panel-corner--bl" aria-hidden="true" />
+      <span className="shop-panel-corner shop-panel-corner--br" aria-hidden="true" />
 
       <nav aria-label="Categorías">
-        <h2 className="font-display text-[17px] tracking-[0.1em] text-parchment">Categorías</h2>
+        <h2 className="shop-panel-title">Categorías</h2>
         <div className="mt-3 flex flex-col">
           {categories.map((c) => (
             <button
@@ -293,7 +299,7 @@ function CatalogueSidebar({
       </nav>
 
       <div className="mt-7">
-        <h2 className="font-display text-[17px] tracking-[0.1em] text-parchment">Buscar</h2>
+        <h2 className="shop-panel-title">Buscar</h2>
         <label className="sr-only" htmlFor="buscar">
           Buscar mercancía
         </label>
@@ -315,35 +321,34 @@ function CatalogueSidebar({
   );
 }
 
-/** Single catalogue entry: engraved image over a parchment name/price strip. */
+/** Single catalogue entry framed like medieval metalwork over parchment. */
 function ProductCard({ product, fallbackIndex }) {
   const fallback = IMG.products[fallbackIndex % IMG.products.length];
   return (
-    <article
-      className="shop-card flex flex-col overflow-hidden"
-      style={{ "--shop-parchment": `url(${IMG.parchment})` }}
-    >
-      <div className="shop-card-media">
-        <img
-          src={firstImage(product.images, fallback)}
-          alt={product.title}
-          loading="lazy"
-          width={640}
-          height={640}
-          className="aspect-[4/3] w-full object-cover"
-          onError={(e) => {
-            e.currentTarget.src = fallback;
-          }}
-        />
-      </div>
-      <div className="shop-card-body flex min-h-[72px] flex-1 flex-col justify-between px-3 py-2.5">
-        <h3 className="shop-card-title line-clamp-2 font-display text-[15px] leading-snug font-semibold text-ink">
-          {product.title}
-        </h3>
-        <p className="mt-1.5 font-body text-[16px] text-ink-soft">
-          {Math.round(product.price)}{" "}
-          <span className="text-[13px] tracking-wider">monedas de oro</span>
-        </p>
+    <article className="shop-card" style={{ "--shop-parchment": `url(${IMG.parchment})` }}>
+      <div className="shop-card-inner flex flex-col">
+        <div className="shop-card-media">
+          <img
+            src={firstImage(product.images, fallback)}
+            alt={product.title}
+            loading="lazy"
+            width={640}
+            height={640}
+            className="aspect-[4/3] w-full object-cover"
+            onError={(e) => {
+              e.currentTarget.src = fallback;
+            }}
+          />
+        </div>
+        <div className="shop-card-body flex min-h-[76px] flex-1 flex-col justify-between px-3 py-2.5">
+          <h3 className="shop-card-title line-clamp-2 font-display text-[15px] leading-snug font-semibold text-ink">
+            {product.title}
+          </h3>
+          <p className="shop-card-price mt-1.5 font-body text-[16px]">
+            {Math.round(product.price)}{" "}
+            <span className="text-[13px] tracking-wider">monedas de oro</span>
+          </p>
+        </div>
       </div>
       {/* Acciones CRUD temporalmente ocultas (sin carrito en el proyecto).
       <div className="flex flex-wrap gap-2 px-3 pb-3">
