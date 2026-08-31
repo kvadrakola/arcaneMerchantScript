@@ -67,19 +67,25 @@ function MobileHeraldry() {
 }
 
 /** Dark stone column with the heraldic banner and the hanging lantern. */
-function LeftRail() {
+function LeftRail({ decorative = false }) {
   return (
-    <aside className="relative hidden w-[300px] shrink-0 lg:block">
+    <aside
+      className={
+        decorative
+          ? "relative h-full w-[300px]"
+          : "relative hidden w-[300px] shrink-0 lg:block"
+      }
+    >
       <img
         src={IMG.banner}
-        alt="Estandarte con león rampante dorado"
+        alt={decorative ? "" : "Estandarte con león rampante dorado"}
         width={576}
         height={1152}
         className="page-shell-rail-banner absolute top-0 left-[52px] w-[190px]"
       />
       <img
         src={IMG.lantern}
-        alt="Farol de latón"
+        alt={decorative ? "" : "Farol de latón"}
         loading="lazy"
         width={672}
         height={992}
@@ -89,3 +95,4 @@ function LeftRail() {
     </aside>
   );
 }
+
