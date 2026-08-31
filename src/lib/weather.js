@@ -2,6 +2,7 @@
  * Open-Meteo current weather (no API key required).
  * Docs: https://open-meteo.com/en/docs
  */
+import { http } from "./http";
 
 export const DEFAULT_PLACE = { name: "Sevilla", latitude: 37.3891, longitude: -5.9845 };
 
