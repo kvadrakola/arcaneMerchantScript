@@ -34,12 +34,12 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-2">
             {NAV_LINKS.map((l) => (
               <li key={l.to}>
-                <Link
+                <AppLink
                   to={l.to}
                   className="font-body text-[17px] text-parchment/85 underline-offset-4 transition-colors hover:text-gold hover:underline focus-visible:text-gold focus-visible:outline-none focus-visible:underline"
                 >
                   {l.label}
-                </Link>
+                </AppLink>
               </li>
             ))}
           </ul>

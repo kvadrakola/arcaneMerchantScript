@@ -104,12 +104,12 @@ function Home() {
                 que cruce nuestras puertas.
               </p>
               <div className="flex flex-wrap gap-4 pt-2">
-                <Link to="/tienda" className="focus-visible:outline-none">
+                <AppLink to="/tienda" className="focus-visible:outline-none">
                   <InkButton>Visitar la tienda</InkButton>
-                </Link>
-                <Link to="/vendedores" className="focus-visible:outline-none">
+                </AppLink>
+                <AppLink to="/vendedores" className="focus-visible:outline-none">
                   <InkButton variant="outline">Conocer el gremio</InkButton>
-                </Link>
+                </AppLink>
               </div>
             </Vellum>
 
