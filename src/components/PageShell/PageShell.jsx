@@ -1,22 +1,15 @@
 import { SiteNav } from "@/components/SiteNav/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter/SiteFooter";
 import { IMG } from "@/assets/assets";
+import "./PageShell.css";
 
 export function PageShell({ children }) {
   return (
     <div
-      className="min-h-screen w-full"
-      style={{
-        backgroundColor: "oklch(0.19 0.012 60)",
-        backgroundImage: `url(${IMG.stone})`,
-        backgroundSize: "620px",
-        backgroundRepeat: "repeat",
-      }}
+      className="page-shell min-h-screen w-full"
+      style={{ "--stone-texture": `url(${IMG.stone})` }}
     >
-      <div
-        className="flex min-h-screen flex-col"
-        style={{ backgroundColor: "oklch(0.12 0.01 60 / 0.55)" }}
-      >
+      <div className="page-shell-overlay flex min-h-screen flex-col">
         <SiteNav />
         <MobileHeraldry />
         <div className="relative flex flex-1 items-stretch">
@@ -38,8 +31,7 @@ function MobileHeraldry() {
         alt="Estandarte con león rampante dorado"
         width={576}
         height={1152}
-        className="h-[74px] w-auto"
-        style={{ filter: "drop-shadow(0 8px 14px oklch(0 0 0 / 0.7))" }}
+        className="page-shell-mobile-banner h-[74px] w-auto"
       />
       <img
         src={IMG.lantern}
@@ -47,8 +39,7 @@ function MobileHeraldry() {
         loading="lazy"
         width={672}
         height={992}
-        className="h-[62px] w-auto"
-        style={{ filter: "drop-shadow(0 0 30px oklch(0.78 0.13 74 / 0.45))" }}
+        className="page-shell-mobile-lantern h-[62px] w-auto"
       />
     </div>
   );
@@ -63,8 +54,7 @@ function LeftRail() {
         alt="Estandarte con león rampante dorado"
         width={576}
         height={1152}
-        className="absolute top-0 left-[52px] w-[190px]"
-        style={{ filter: "drop-shadow(0 14px 22px oklch(0 0 0 / 0.75))" }}
+        className="page-shell-rail-banner absolute top-0 left-[52px] w-[190px]"
       />
       <img
         src={IMG.lantern}
@@ -72,15 +62,9 @@ function LeftRail() {
         loading="lazy"
         width={672}
         height={992}
-        className="absolute top-[430px] left-[6px] w-[132px]"
-        style={{ filter: "drop-shadow(0 0 44px oklch(0.78 0.13 74 / 0.45))" }}
+        className="page-shell-rail-lantern absolute top-[430px] left-[6px] w-[132px]"
       />
-      <span
-        className="pointer-events-none absolute top-[470px] left-[10px] h-[220px] w-[220px] rounded-full"
-        style={{
-          background: "radial-gradient(circle, oklch(0.8 0.13 74 / 0.22) 0%, transparent 70%)",
-        }}
-      />
+      <span className="page-shell-lantern-aura pointer-events-none absolute top-[470px] left-[10px] h-[220px] w-[220px] rounded-full" />
     </aside>
   );
 }

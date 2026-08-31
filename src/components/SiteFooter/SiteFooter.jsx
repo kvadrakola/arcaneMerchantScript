@@ -1,27 +1,14 @@
 import { Link } from "@tanstack/react-router";
 import { IMG } from "@/assets/assets";
 import { NAV_LINKS } from "@/lib/navLinks";
+import "./SiteFooter.css";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer
-      className="relative z-20 border-t-2 border-black/70"
-      style={{
-        backgroundColor: "oklch(0.15 0.01 60)",
-        backgroundImage:
-          "linear-gradient(180deg, oklch(0.21 0.015 60) 0%, oklch(0.13 0.01 60) 60%, oklch(0.1 0.008 60) 100%)",
-        boxShadow: "0 -6px 18px oklch(0 0 0 / 0.6)",
-      }}
-    >
-      <span
-        className="block h-[2px] w-full"
-        style={{
-          background:
-            "linear-gradient(to right, transparent, oklch(0.78 0.11 84 / 0.55), transparent)",
-        }}
-      />
+    <footer className="site-footer relative z-20 border-t-2 border-black/70">
+      <span className="site-footer-rule block h-[2px] w-full" />
       <div className="mx-auto grid max-w-[1180px] grid-cols-1 gap-9 px-6 py-10 sm:grid-cols-2 lg:grid-cols-3">
         <div className="flex items-start gap-4">
           <img
