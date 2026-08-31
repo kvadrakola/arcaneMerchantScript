@@ -8,54 +8,54 @@ import { Vellum } from "@/components/Vellum/Vellum";
 import { IMG } from "@/assets/assets";
 
 /** Portraits reuse the guild's own engravings so no image can break. */
-const VENDEDORES = [
+const GUILD_VENDORS = [
   {
-    nombre: "Casa Ferrata",
-    maestro: "Beatriz Ferrata",
-    oficio: "Maestra herrera",
-    villa: "Villa de Aldoria",
-    admitido: 1031,
-    retrato: IMG.products[0],
+    workshop: "Casa Ferrata",
+    master: "Beatriz Ferrata",
+    craft: "Maestra herrera",
+    town: "Villa de Aldoria",
+    admittedYear: 1031,
+    portrait: IMG.products[0],
   },
   {
-    nombre: "Scriptorium Aureum",
-    maestro: "Gonzalo el Escriba",
-    oficio: "Escriba e iluminador",
-    villa: "Burgo de Valmar",
-    admitido: 1044,
-    retrato: IMG.products[2],
+    workshop: "Scriptorium Aureum",
+    master: "Gonzalo el Escriba",
+    craft: "Escriba e iluminador",
+    town: "Burgo de Valmar",
+    admittedYear: 1044,
+    portrait: IMG.products[2],
   },
   {
-    nombre: "Botica de Sant Roc",
-    maestro: "Inés de Mirena",
-    oficio: "Boticaria",
-    villa: "Puerto de Mirena",
-    admitido: 1052,
-    retrato: IMG.products[3],
+    workshop: "Botica de Sant Roc",
+    master: "Inés de Mirena",
+    craft: "Boticaria",
+    town: "Puerto de Mirena",
+    admittedYear: 1052,
+    portrait: IMG.products[3],
   },
   {
-    nombre: "Taller Corvina",
-    maestro: "Rodrigo Corvina",
-    oficio: "Talabartero",
-    villa: "Villa de Aldoria",
-    admitido: 1057,
-    retrato: IMG.products[1],
+    workshop: "Taller Corvina",
+    master: "Rodrigo Corvina",
+    craft: "Talabartero",
+    town: "Villa de Aldoria",
+    admittedYear: 1057,
+    portrait: IMG.products[1],
   },
   {
-    nombre: "Fundición Ordoño",
-    maestro: "Ordoño el Fundidor",
-    oficio: "Fundidor de campanas",
-    villa: "Monte Alcor",
-    admitido: 1063,
-    retrato: IMG.market,
+    workshop: "Fundición Ordoño",
+    master: "Ordoño el Fundidor",
+    craft: "Fundidor de campanas",
+    town: "Monte Alcor",
+    admittedYear: 1063,
+    portrait: IMG.market,
   },
   {
-    nombre: "Telares del Norte",
-    maestro: "Marta del Telar",
-    oficio: "Tejedora de paños",
-    villa: "Bajo Ríoseco",
-    admitido: 1068,
-    retrato: IMG.town,
+    workshop: "Telares del Norte",
+    master: "Marta del Telar",
+    craft: "Tejedora de paños",
+    town: "Bajo Ríoseco",
+    admittedYear: 1068,
+    portrait: IMG.town,
   },
 ];
 
@@ -74,12 +74,12 @@ function Vendors() {
           </Vellum>
 
           <div className="mt-12 grid grid-cols-1 gap-7 sm:grid-cols-2 xl:grid-cols-3">
-            {VENDEDORES.map((v) => (
-              <ParchmentCard key={v.nombre}>
+            {GUILD_VENDORS.map((vendor) => (
+              <ParchmentCard key={vendor.workshop}>
                 <div className="flex items-start gap-4">
                   <img
-                    src={v.retrato}
-                    alt={`Retrato de ${v.maestro}, ${v.oficio.toLowerCase()}`}
+                    src={vendor.portrait}
+                    alt={`Retrato de ${vendor.master}, ${vendor.craft.toLowerCase()}`}
                     loading="lazy"
                     width={640}
                     height={640}
@@ -88,12 +88,14 @@ function Vendors() {
                   />
                   <div className="min-w-0">
                     <h2 className="font-display text-[22px] leading-tight font-bold text-ink">
-                      {v.maestro}
+                      {vendor.master}
                     </h2>
-                    <p className="mt-1 font-body text-[18px] text-ink-soft italic">{v.oficio}</p>
+                    <p className="mt-1 font-body text-[18px] text-ink-soft italic">
+                      {vendor.craft}
+                    </p>
                     <p className="mt-2 flex items-center gap-2 font-display text-[13px] tracking-[0.14em] uppercase text-ink">
                       <Crest />
-                      {v.nombre}
+                      {vendor.workshop}
                     </p>
                   </div>
                 </div>
@@ -101,15 +103,17 @@ function Vendors() {
                 <dl className="mt-4 space-y-1.5 font-body text-[18px] text-ink">
                   <div className="flex justify-between gap-3">
                     <dt className="text-ink-soft">Villa</dt>
-                    <dd>{v.villa}</dd>
+                    <dd>{vendor.town}</dd>
                   </div>
                   <div className="flex justify-between gap-3">
                     <dt className="text-ink-soft">Admitido</dt>
-                    <dd>Anno {v.admitido}</dd>
+                    <dd>Anno {vendor.admittedYear}</dd>
                   </div>
                 </dl>
                 <div className="mt-5">
-                  <InkButton variant="outline">Ver taller</InkButton>
+                  <InkButton variant="outline" aria-label={`Ver el taller de ${vendor.workshop}`}>
+                    Ver taller
+                  </InkButton>
                 </div>
               </ParchmentCard>
             ))}

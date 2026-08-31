@@ -47,7 +47,7 @@ function Shop() {
     [items],
   );
 
-  const visible = items.filter(
+  const visibleProducts = items.filter(
     (p) =>
       (category === "Todo" || p.category?.name === category) &&
       p.title.toLowerCase().includes(search.trim().toLowerCase()),
@@ -207,7 +207,7 @@ function Shop() {
 
           {items.length > 0 && (
             <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4">
-              {visible.map((p, i) => (
+              {visibleProducts.map((p, i) => (
                 <ParchmentCard key={p.id} className="flex flex-col">
                   <div className="border border-[oklch(0.36_0.04_55_/_0.5)] bg-[oklch(0.9_0.04_84_/_0.6)]">
                     <img
@@ -244,7 +244,7 @@ function Shop() {
                   </div> */}
                 </ParchmentCard>
               ))}
-              {visible.length === 0 && (
+              {visibleProducts.length === 0 && (
                 <div className="sm:col-span-2 xl:col-span-4">
                   <InkNotice title="Sin mercancías">
                     Ninguna mercancía coincide con la búsqueda.

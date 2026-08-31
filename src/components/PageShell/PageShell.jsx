@@ -5,16 +5,22 @@ import "./PageShell.css";
 
 export function PageShell({ children }) {
   return (
-    <div
-      className="page-shell min-h-screen w-full"
-      style={{ "--stone-texture": `url(${IMG.stone})` }}
-    >
-      <div className="page-shell-overlay flex min-h-screen flex-col">
+    <div className="page-shell min-h-dvh w-full" style={{ "--stone-texture": `url(${IMG.stone})` }}>
+      <div className="page-shell-overlay flex min-h-dvh flex-col">
+        {/* Keyboard users can jump straight to the page content. */}
+        <a
+          href="#contenido"
+          className="sr-only rounded-sm bg-accent px-4 py-2 font-display text-[15px] text-parchment focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50"
+        >
+          Saltar al contenido
+        </a>
         <SiteNav />
         <MobileHeraldry />
         <div className="relative flex flex-1 items-stretch">
           <LeftRail />
-          <main className="relative min-w-0 flex-1">{children}</main>
+          <main id="contenido" className="relative min-w-0 flex-1">
+            {children}
+          </main>
         </div>
         <SiteFooter />
       </div>
