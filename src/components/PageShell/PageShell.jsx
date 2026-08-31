@@ -3,7 +3,12 @@ import { SiteFooter } from "@/components/SiteFooter/SiteFooter";
 import { IMG } from "@/assets/assets";
 import "./PageShell.css";
 
-export function PageShell({ children }) {
+/**
+ * Shared shell. `heraldryOverlay` lets a page (currently /tienda) keep the
+ * banner/lantern as pure decoration layered over a full-width main area
+ * instead of a structural left column.
+ */
+export function PageShell({ children, heraldryOverlay = false }) {
   return (
     <div className="page-shell min-h-dvh w-full" style={{ "--stone-texture": `url(${IMG.stone})` }}>
       <div className="page-shell-overlay flex min-h-dvh flex-col">
@@ -17,7 +22,16 @@ export function PageShell({ children }) {
         <SiteNav />
         <MobileHeraldry />
         <div className="relative flex flex-1 items-stretch">
-          <LeftRail />
+          {heraldryOverlay ? (
+            <div
+              className="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-[300px] lg:block"
+              aria-hidden="true"
+            >
+              <LeftRail decorative />
+            </div>
+          ) : (
+            <LeftRail />
+          )}
           <main id="contenido" className="relative min-w-0 flex-1">
             {children}
           </main>
@@ -27,6 +41,7 @@ export function PageShell({ children }) {
     </div>
   );
 }
+
 
 /** Slim heraldic band so the identity survives below the lg breakpoint. */
 function MobileHeraldry() {
