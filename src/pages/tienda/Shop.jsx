@@ -141,8 +141,8 @@ function Shop() {
       <section className="shop-hall flex min-h-[calc(100vh-74px)] flex-col">
         {/* El comercio es de dos columnas: panel de filtros a la izquierda y
             catálogo a la derecha. La heráldica decorativa vive dentro de la
-            columna de filtros, sin reservar una tercera columna. */}
-        <div className="flex-1 px-4 pt-6 pb-10 sm:px-6 lg:pr-10">
+            columna de filtros; el hueco a la izquierda es sólo margen de piedra. */}
+        <div className="flex-1 px-4 pt-6 pb-10 sm:px-6 lg:pr-10 lg:pl-[124px]">
           <h1 className="sr-only">Tienda del reino</h1>
 
           <div className="grid grid-cols-1 gap-7 lg:grid-cols-[236px_minmax(0,1fr)]">
