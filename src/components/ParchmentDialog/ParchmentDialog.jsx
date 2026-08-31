@@ -1,10 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useId, useRef } from "react";
 import { Ornament } from "@/components/Ornament/Ornament";
 import { IMG } from "@/assets/assets";
 import "./ParchmentDialog.css";
 
 /** Parchment modal used for every CRUD form. */
 export function ParchmentDialog({ open, title, onClose, children }) {
+  const titleId = useId();
+  const surfaceRef = useRef(null);
+  const lastFocusedRef = useRef(null);
+
   useEffect(() => {
     if (!open) return;
     const onKey = (e) => {
@@ -14,6 +18,18 @@ export function ParchmentDialog({ open, title, onClose, children }) {
     return () => document.removeEventListener("keydown", onKey);
   }, [open, onClose]);
 
+  // Move focus into the dialog on open and return it to the trigger on close.
+  useEffect(() => {
+    if (!open) return;
+    lastFocusedRef.current = document.activeElement;
+    const focusable = surfaceRef.current?.querySelector("input, textarea, select, button, [href]");
+    focusable?.focus();
+    return () => {
+      const previous = lastFocusedRef.current;
+      if (previous && typeof previous.focus === "function") previous.focus();
+    };
+  }, [open]);
+
   if (!open) return null;
 
   return (
@@ -21,15 +37,21 @@ export function ParchmentDialog({ open, title, onClose, children }) {
       className="parchment-dialog-backdrop fixed inset-0 z-50 flex items-start justify-center overflow-y-auto p-4 py-10"
       role="dialog"
       aria-modal="true"
-      aria-label={title}
+      aria-labelledby={titleId}
     >
       <div
+        ref={surfaceRef}
         className="parchment-dialog-surface relative w-full max-w-[560px] border-2 border-[oklch(0.36_0.04_55_/_0.7)] p-7"
         style={{ "--parchment-texture": `url(${IMG.parchment})` }}
       >
-        <span className="pointer-events-none absolute inset-[6px] border border-[oklch(0.36_0.04_55_/_0.35)]" />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-[6px] border border-[oklch(0.36_0.04_55_/_0.35)]"
+        />
         <div className="relative">
-          <h2 className="font-display text-[26px] font-bold text-ink">{title}</h2>
+          <h2 id={titleId} className="font-display text-[26px] font-bold text-ink">
+            {title}
+          </h2>
           <Ornament className="mt-4" />
           <div className="mt-6">{children}</div>
         </div>
@@ -39,7 +61,7 @@ export function ParchmentDialog({ open, title, onClose, children }) {
           aria-label="Cerrar"
           className="absolute top-3 right-3 z-10 flex h-9 w-9 items-center justify-center border border-[oklch(0.34_0.04_55_/_0.6)] font-display text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[oklch(0.3_0.03_55)]"
         >
-          ✕
+          <span aria-hidden="true">✕</span>
         </button>
       </div>
     </div>

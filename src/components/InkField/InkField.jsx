@@ -1,7 +1,9 @@
+import { useId } from "react";
+
 /** Labelled input in the ledger style. */
 export function InkField({ label, value, onChange, type = "text", required, textarea }) {
-  const id = `f-${label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
-  const cls = "ledger-control mt-1.5 w-full";
+  const id = useId();
+  const controlClass = "ledger-control mt-1.5 w-full";
   return (
     <p>
       <label
@@ -17,7 +19,7 @@ export function InkField({ label, value, onChange, type = "text", required, text
           required={required}
           rows={3}
           onChange={(e) => onChange(e.target.value)}
-          className={cls}
+          className={controlClass}
         />
       ) : (
         <input
@@ -26,7 +28,7 @@ export function InkField({ label, value, onChange, type = "text", required, text
           value={value}
           required={required}
           onChange={(e) => onChange(e.target.value)}
-          className={cls}
+          className={controlClass}
         />
       )}
     </p>
