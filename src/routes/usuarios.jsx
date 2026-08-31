@@ -198,7 +198,7 @@ function UsuariosPage() {
                       ))}
                     </tr>
                   </thead>
-
+                  <tbody>
                     {items.map((u, i) => (
                       <tr
                         key={u.id}

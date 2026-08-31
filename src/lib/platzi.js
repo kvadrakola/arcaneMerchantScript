@@ -6,7 +6,7 @@
 
 export const PLATZI_BASE = "https://api.escuelajs.co/api/v1";
 
-async function request(path, init) {
+async function request   (path        , init              )             {
   const res = await fetch(`${PLATZI_BASE}${path}`, {
     ...init,
     headers: { "Content-Type": "application/json", ...(init?.headers ?? {}) },
@@ -15,52 +15,52 @@ async function request(path, init) {
     const body = await res.text().catch(() => "");
     throw new Error(`FakeAPI ${res.status}: ${body.slice(0, 180) || res.statusText}`);
   }
-  if (res.status === 204) return undefined;
-  return await res.json();
+  if (res.status === 204) return undefined     ;
+  return (await res.json())     ;
 }
 
 /** Some API records carry broken placeholder image URLs; normalise them. */
-export function firstImage(images, fallback) {
+export function firstImage(images                      , fallback        )         {
   const raw = images?.[0] ?? "";
-  const cleaned = raw
-    .replace(/^\["?|"?\]$/g, "")
-    .replace(/^"|"$/g, "")
-    .trim();
+  const cleaned = raw.replace(/^\["?|"?\]$/g, "").replace(/^"|"$/g, "").trim();
   if (!cleaned.startsWith("http")) return fallback;
   return cleaned;
 }
 
 /* ---------------------------------- products --------------------------------- */
 
-export const listProducts = (limit = 40) => request(`/products?offset=0&limit=${limit}`);
+export const listProducts = (limit = 40) =>
+  request           (`/products?offset=0&limit=${limit}`);
 
-export const listCategories = () => request(`/categories?limit=12`);
+export const listCategories = () => request            (`/categories?limit=12`);
 
-export const createProduct = (input) =>
-  request(`/products/`, { method: "POST", body: JSON.stringify(input) });
+export const createProduct = (input              ) =>
+  request         (`/products/`, { method: "POST", body: JSON.stringify(input) });
 
-export const updateProduct = (id, input) =>
-  request(`/products/${id}`, { method: "PUT", body: JSON.stringify(input) });
+export const updateProduct = (id        , input                       ) =>
+  request         (`/products/${id}`, { method: "PUT", body: JSON.stringify(input) });
 
-export const deleteProduct = (id) => request(`/products/${id}`, { method: "DELETE" });
+export const deleteProduct = (id        ) =>
+  request         (`/products/${id}`, { method: "DELETE" });
 
 /* ----------------------------------- users ----------------------------------- */
 
-export const listUsers = (limit = 20) => request(`/users?limit=${limit}`);
+export const listUsers = (limit = 20) => request        (`/users?limit=${limit}`);
 
-export const createUser = (input) =>
-  request(`/users/`, { method: "POST", body: JSON.stringify(input) });
+export const createUser = (input           ) =>
+  request      (`/users/`, { method: "POST", body: JSON.stringify(input) });
 
-export const updateUser = (id, input) =>
-  request(`/users/${id}`, { method: "PUT", body: JSON.stringify(input) });
+export const updateUser = (id        , input                    ) =>
+  request      (`/users/${id}`, { method: "PUT", body: JSON.stringify(input) });
 
-export const deleteUser = (id) => request(`/users/${id}`, { method: "DELETE" });
+export const deleteUser = (id        ) =>
+  request         (`/users/${id}`, { method: "DELETE" });
 
 /**
  * The public demo dataset is polluted with test records (titles like
  * "title-7d27dc8c-…", placeholder images). Keep only presentable wares.
  */
-export function isPresentable(p) {
+export function isPresentable(p         )          {
   const t = (p.title ?? "").trim();
   if (t.length < 3) return false;
   if (/^(title|string|product|new product|test)\b/i.test(t)) return false;

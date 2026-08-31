@@ -117,7 +117,7 @@ function RootShell({ children }                         ) {
       <head>
         <HeadContent />
       </head>
-
+      <body>
         {children}
         <Scripts />
       </body>

@@ -55,7 +55,7 @@ export function SiteNav() {
               activeOptions={{ exact: l.to === "/" }}
               className="group relative px-2 py-1 font-body text-[19px] text-parchment/85 transition-colors hover:text-gold focus-visible:text-gold focus-visible:outline-none"
             >
-              {({ isActive }: { isActive: boolean }) => (
+              {({ isActive }                       ) => (
                 <span className="flex items-center gap-2">
                   {isActive && <GoldFleur />}
                   <span className={isActive ? "text-gold brass-glow" : undefined}>
@@ -125,10 +125,10 @@ export function SiteNav() {
 function MenuIcon({ open }                   ) {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-      {open   (
+      {open ? (
         <path d="M5 5l14 14M19 5L5 19" />
-      )
-                                          />
+      ) : (
+        <path d="M4 7h16M4 12h16M4 17h16" />
       )}
     </svg>
   );

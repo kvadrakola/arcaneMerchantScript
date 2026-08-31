@@ -70,7 +70,7 @@ function HomePage() {
           <PageTitle>Mercatum Regni</PageTitle>
 
           <div className="mt-10">
-            {isPending   (
+            {isPending ? (
               <InkNotice title="Desplegando el pergamino">
                 El heraldo trae las mercancías más preciadas del reino…
               </InkNotice>
@@ -98,7 +98,7 @@ function HomePage() {
                 Bienvenido al mercado del reino, donde mercaderes y artesanos exponen sus
                 mejores obras bajo el amparo del gremio.
               </p>
-
+              <p>
                 Armas forjadas, arneses, libros iluminados y remedios de botica esperan al
                 viajero que cruce nuestras puertas.
               </p>

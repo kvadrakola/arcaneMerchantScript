@@ -19,6 +19,7 @@ import {
   isPresentable,
   listProducts,
   updateProduct,
+
 } from "@/lib/platzi";
 
 export const Route = createFileRoute("/tienda")({
@@ -40,7 +41,7 @@ export const Route = createFileRoute("/tienda")({
   component: TiendaPage,
 });
 
-const EMPTY_FORM = { title: "", price: "", description: "", image: "" };
+const EMPTY_FORM            = { title: "", price: "", description: "", image: "" };
 
 function TiendaPage() {
   const { data, isPending, isError, error, refetch } = useQuery({
@@ -50,14 +51,14 @@ function TiendaPage() {
     retry: 1,
   });
 
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState           ([]);
   const [category, setCategory] = useState("Todo");
   const [search, setSearch] = useState("");
-  const [editing, setEditing] = useState(null);
+  const [editing, setEditing] = useState                (null);
   const [creating, setCreating] = useState(false);
-  const [form, setForm] = useState(EMPTY_FORM);
+  const [form, setForm] = useState           (EMPTY_FORM);
   const [busy, setBusy] = useState(false);
-  const [notice, setNotice] = useState(null);
+  const [notice, setNotice] = useState               (null);
 
   useEffect(() => {
     if (data) setItems(data.filter(isPresentable));
@@ -79,12 +80,12 @@ function TiendaPage() {
     setCreating(true);
   };
 
-  const openEdit = (p) => {
+  const openEdit = (p         ) => {
     setForm({
       title: p.title,
       price: String(Math.round(p.price)),
       description: p.description ?? "",
-      image: firstImage(p.images, IMG.products[0]),
+      image: firstImage(p.images, IMG.products[0] ),
     });
     setEditing(p);
   };
@@ -97,7 +98,7 @@ function TiendaPage() {
       price: Number(form.price) || 1,
       description: form.description || "Mercancía del gremio.",
       categoryId: 1,
-      images: [form.image || IMG.products[0]],
+      images: [form.image || IMG.products[0] ],
     };
     try {
       const created = await createProduct(payload);
@@ -132,7 +133,7 @@ function TiendaPage() {
       title: form.title,
       price: Number(form.price) || editing.price,
       description: form.description,
-      images: [form.image || firstImage(editing.images, IMG.products[0])],
+      images: [form.image || firstImage(editing.images, IMG.products[0] )],
     };
     try {
       await updateProduct(editing.id, patch);
@@ -145,7 +146,7 @@ function TiendaPage() {
     setEditing(null);
   };
 
-  const remove = async (p) => {
+  const remove = async (p         ) => {
     setNotice(null);
     try {
       await deleteProduct(p.id);
@@ -179,10 +180,7 @@ function TiendaPage() {
             </InkButton>
           </div>
 
-          <nav
-            aria-label="Categorías"
-            className="mt-6 flex flex-wrap items-center justify-center gap-3"
-          >
+          <nav aria-label="Categorías" className="mt-6 flex flex-wrap items-center justify-center gap-3">
             {categories.map((c) => (
               <button
                 key={c}
@@ -217,7 +215,7 @@ function TiendaPage() {
           {isError && items.length === 0 && (
             <div className="mt-12">
               <InkNotice tone="error" title="El mercado no responde">
-                {error?.message ?? "No se pudo consultar el catálogo remoto."}
+                {(error         )?.message ?? "No se pudo consultar el catálogo remoto."}
               </InkNotice>
             </div>
           )}
@@ -228,19 +226,16 @@ function TiendaPage() {
                 <ParchmentCard key={p.id} className="flex flex-col">
                   <div className="border border-[oklch(0.36_0.04_55_/_0.5)] bg-[oklch(0.9_0.04_84_/_0.6)]">
                     <img
-                      src={firstImage(p.images, IMG.products[i % IMG.products.length])}
+                      src={firstImage(p.images, IMG.products[i % IMG.products.length] )}
                       alt={p.title}
                       loading="lazy"
                       width={640}
                       height={640}
                       className="aspect-square w-full object-cover"
                       onError={(e) => {
-                        e.currentTarget.src = IMG.products[i % IMG.products.length];
+                        e.currentTarget.src = IMG.products[i % IMG.products.length] ;
                       }}
-                      style={{
-                        mixBlendMode: "multiply",
-                        filter: "sepia(0.55) contrast(1.05) saturate(0.85)",
-                      }}
+                      style={{ mixBlendMode: "multiply", filter: "sepia(0.55) contrast(1.05) saturate(0.85)" }}
                     />
                   </div>
                   <h2 className="mt-4 font-display text-[19px] leading-snug font-bold text-ink">
@@ -303,7 +298,17 @@ function TiendaPage() {
   );
 }
 
-function ProductDialog({ open, title, form, setForm, busy, onClose, onSubmit }) {
+function ProductDialog({
+  open,
+  title,
+  form,
+  setForm,
+  busy,
+  onClose,
+  onSubmit,
+}
+
+ ) {
   return (
     <ParchmentDialog open={open} title={title} onClose={onClose}>
       <form

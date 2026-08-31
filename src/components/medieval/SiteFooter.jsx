@@ -74,7 +74,7 @@ export function SiteFooter() {
                 FakeAPI Platzi
               </a>
             </li>
-
+            <li>
               Parte del cielo:{" "}
               <a
                 href="https://open-meteo.com/en/docs"
