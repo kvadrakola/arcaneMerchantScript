@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { IMG } from "./assets";
-import { GoldFleur } from "./Ornament";
-import { WeatherWidget } from "./WeatherWidget";
-import { NAV_LINKS } from "./nav-links";
+import { IMG } from "@/assets/assets";
+import { GoldFleur } from "@/components/Ornament/Ornament";
+import { WeatherWidget } from "@/components/WeatherWidget/WeatherWidget";
+import { NAV_LINKS } from "@/lib/navLinks";
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
