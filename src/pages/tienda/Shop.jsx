@@ -319,25 +319,25 @@ function CatalogueSidebar({
             Recargar
           </InkButton>
         </div>
+      </div>
 
-        {/* Heráldica decorativa que pertenece a la columna de filtros. */}
-        <div className="shop-heraldry hidden lg:flex" aria-hidden="true">
-          <img
-            src={IMG.banner}
-            alt=""
-            width={576}
-            height={1152}
-            className="shop-heraldry-banner"
-          />
-          <img
-            src={IMG.lantern}
-            alt=""
-            width={672}
-            height={992}
-            loading="lazy"
-            className="shop-heraldry-lantern"
-          />
-        </div>
+      {/* Heráldica decorativa que pertenece a la columna de filtros. */}
+      <div className="shop-heraldry hidden lg:flex" aria-hidden="true">
+        <img
+          src={IMG.banner}
+          alt=""
+          width={576}
+          height={1152}
+          className="shop-heraldry-banner"
+        />
+        <img
+          src={IMG.lantern}
+          alt=""
+          width={672}
+          height={992}
+          loading="lazy"
+          className="shop-heraldry-lantern"
+        />
       </div>
     </aside>
   );
