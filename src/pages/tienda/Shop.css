@@ -88,14 +88,9 @@
 .shop-card-body {
   background-image: linear-gradient(
     to bottom,
-    oklch(0.93 0.035 84 / 0.94),
-    oklch(0.88 0.04 82 / 0.94)
+    oklch(0.93 0.035 84),
+    oklch(0.87 0.042 82)
   );
 }
 
-.shop-card-title {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
+
