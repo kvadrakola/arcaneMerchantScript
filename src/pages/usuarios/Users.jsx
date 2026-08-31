@@ -21,7 +21,7 @@ const EMPTY = {
   avatar: "https://i.pravatar.cc/150?img=12",
 };
 
-const RANGO = { admin: "Mayordomo del reino", customer: "Súbdito" };
+const ROLE_LABELS = { admin: "Mayordomo del reino", customer: "Súbdito" };
 
 function Users() {
   const { data, isPending, isError, error, refetch } = useQuery({
@@ -199,14 +199,22 @@ function Users() {
                         <td className="px-5 py-3.5">{u.name}</td>
                         <td className="px-5 py-3.5 text-ink-soft">{u.email}</td>
                         <td className="px-5 py-3.5 italic text-ink-soft">
-                          {RANGO[u.role] ?? u.role}
+                          {ROLE_LABELS[u.role] ?? u.role}
                         </td>
                         <td className="px-5 py-3.5">
                           <div className="flex flex-wrap gap-2">
-                            <InkButton variant="outline" onClick={() => openEdit(u)}>
+                            <InkButton
+                              variant="outline"
+                              onClick={() => openEdit(u)}
+                              aria-label={`Enmendar el registro de ${u.name}`}
+                            >
                               Enmendar
                             </InkButton>
-                            <InkButton variant="danger" onClick={() => void remove(u)}>
+                            <InkButton
+                              variant="danger"
+                              onClick={() => void remove(u)}
+                              aria-label={`Borrar el registro de ${u.name}`}
+                            >
                               Borrar
                             </InkButton>
                           </div>
