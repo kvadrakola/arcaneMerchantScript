@@ -40,11 +40,9 @@ export const listProducts = (limit = 40) => request(`/products?offset=0&limit=${
 
 export const listCategories = () => request(`/categories?limit=12`);
 
-export const createProduct = (input) =>
-  request(`/products/`, { method: "POST", body: JSON.stringify(input) });
+export const createProduct = (input) => request(`/products/`, { method: "POST", data: input });
 
-export const updateProduct = (id, input) =>
-  request(`/products/${id}`, { method: "PUT", body: JSON.stringify(input) });
+export const updateProduct = (id, input) => request(`/products/${id}`, { method: "PUT", data: input });
 
 export const deleteProduct = (id) => request(`/products/${id}`, { method: "DELETE" });
 
