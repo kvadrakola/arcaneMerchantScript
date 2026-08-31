@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { AppLink } from "@/components/AppLink/AppLink";
 import { GoldFleur } from "@/components/Ornament/Ornament";
 import { InkButton } from "@/components/InkButton/InkButton";
 import { IMG } from "@/assets/assets";
@@ -54,9 +54,9 @@ export function HeroCarousel({ items }) {
             <span className="text-[15px] tracking-wider">monedas de oro</span>
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-4">
-            <Link to="/tienda" className="focus-visible:outline-none">
+            <AppLink to="/tienda" className="focus-visible:outline-none">
               <InkButton>Ver en la tienda</InkButton>
-            </Link>
+            </AppLink>
             <div className="flex items-center gap-2">
               <ArrowButton
                 label="Mercancía anterior"
