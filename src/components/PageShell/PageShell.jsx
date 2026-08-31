@@ -1,6 +1,6 @@
-import { SiteNav } from "./SiteNav";
-import { SiteFooter } from "./SiteFooter";
-import { IMG } from "./assets";
+import { SiteNav } from "@/components/SiteNav/SiteNav";
+import { SiteFooter } from "@/components/SiteFooter/SiteFooter";
+import { IMG } from "@/assets/assets";
 
 export function PageShell({ children }) {
   return (
