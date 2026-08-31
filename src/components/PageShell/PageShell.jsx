@@ -70,7 +70,9 @@ function LeftRail({ decorative = false }) {
   return (
     <aside
       className={
-        decorative ? "relative h-full w-[300px]" : "relative hidden w-[300px] shrink-0 lg:block"
+        decorative
+          ? "page-shell-rail--slim relative h-full w-[300px]"
+          : "relative hidden w-[300px] shrink-0 lg:block"
       }
     >
       <img
