@@ -137,10 +137,11 @@ function Shop() {
   };
 
   return (
-    <PageShell heraldryOverlay>
+    <PageShell>
       <section className="shop-hall flex min-h-[calc(100vh-74px)] flex-col">
-        {/* La heráldica es un overlay decorativo: sólo dejamos el hueco visual
-            mínimo a su izquierda, sin reservar una tercera columna. */}
+        {/* El comercio es de dos columnas: panel de filtros a la izquierda y
+            catálogo a la derecha. La heráldica decorativa vive dentro de la
+            columna de filtros; el hueco a la izquierda es sólo margen de piedra. */}
         <div className="flex-1 px-4 pt-6 pb-10 sm:px-6 lg:pr-10 lg:pl-[124px]">
           <h1 className="sr-only">Tienda del reino</h1>
 
@@ -277,49 +278,64 @@ function CatalogueSidebar({
   onReload,
 }) {
   return (
-    <aside className="shop-panel relative h-fit px-5 py-6">
-      <span className="shop-panel-corner shop-panel-corner--tl" aria-hidden="true" />
-      <span className="shop-panel-corner shop-panel-corner--tr" aria-hidden="true" />
-      <span className="shop-panel-corner shop-panel-corner--bl" aria-hidden="true" />
-      <span className="shop-panel-corner shop-panel-corner--br" aria-hidden="true" />
+    <div className="shop-sidebar flex flex-col">
+      <aside className="shop-panel relative h-fit px-5 py-6">
+        <span className="shop-panel-corner shop-panel-corner--tl" aria-hidden="true" />
+        <span className="shop-panel-corner shop-panel-corner--tr" aria-hidden="true" />
+        <span className="shop-panel-corner shop-panel-corner--bl" aria-hidden="true" />
+        <span className="shop-panel-corner shop-panel-corner--br" aria-hidden="true" />
 
-      <nav aria-label="Categorías">
-        <h2 className="shop-panel-title">Categorías</h2>
-        <div className="mt-3 flex flex-col">
-          {categories.map((c) => (
-            <button
-              key={c}
-              type="button"
-              className="shop-category"
-              aria-pressed={category === c}
-              onClick={() => onCategory(c)}
-            >
-              {c}
-            </button>
-          ))}
+        <nav aria-label="Categorías">
+          <h2 className="shop-panel-title">Categorías</h2>
+          <div className="mt-3 flex flex-col">
+            {categories.map((c) => (
+              <button
+                key={c}
+                type="button"
+                className="shop-category"
+                aria-pressed={category === c}
+                onClick={() => onCategory(c)}
+              >
+                {c}
+              </button>
+            ))}
+          </div>
+        </nav>
+
+        <div className="mt-7">
+          <h2 className="shop-panel-title">Buscar</h2>
+          <label className="sr-only" htmlFor="buscar">
+            Buscar mercancía
+          </label>
+          <input
+            id="buscar"
+            value={search}
+            onChange={(e) => onSearch(e.target.value)}
+            placeholder="Buscar mercancía…"
+            className="ledger-control mt-3 w-full"
+          />
+          <div className="mt-4 flex flex-col gap-3">
+            <InkButton onClick={onCreate}>Inscribir mercancía</InkButton>
+            <InkButton variant="outline" onClick={onReload}>
+              Recargar
+            </InkButton>
+          </div>
         </div>
-      </nav>
+      </aside>
 
-      <div className="mt-7">
-        <h2 className="shop-panel-title">Buscar</h2>
-        <label className="sr-only" htmlFor="buscar">
-          Buscar mercancía
-        </label>
-        <input
-          id="buscar"
-          value={search}
-          onChange={(e) => onSearch(e.target.value)}
-          placeholder="Buscar mercancía…"
-          className="ledger-control mt-3 w-full"
+      {/* Heráldica decorativa que pertenece a la columna de filtros. */}
+      <div className="shop-heraldry hidden lg:flex" aria-hidden="true">
+        <img src={IMG.banner} alt="" width={576} height={1152} className="shop-heraldry-banner" />
+        <img
+          src={IMG.lantern}
+          alt=""
+          width={672}
+          height={992}
+          loading="lazy"
+          className="shop-heraldry-lantern"
         />
-        <div className="mt-4 flex flex-col gap-3">
-          <InkButton onClick={onCreate}>Inscribir mercancía</InkButton>
-          <InkButton variant="outline" onClick={onReload}>
-            Recargar
-          </InkButton>
-        </div>
       </div>
-    </aside>
+    </div>
   );
 }
 

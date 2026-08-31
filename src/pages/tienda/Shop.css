@@ -267,3 +267,31 @@
     inset 0 3px 0 oklch(0.48 0.06 62 / 0.45),
     0 -14px 28px -10px oklch(0 0 0 / 0.75);
 }
+
+/* ---------- Heráldica decorativa de la columna de filtros ---------- */
+
+.shop-heraldry {
+  margin-top: 1.25rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.shop-heraldry-banner {
+  width: 120px;
+  height: auto;
+  filter: drop-shadow(0 10px 16px oklch(0 0 0 / 0.7));
+}
+
+.shop-heraldry-lantern {
+  width: 80px;
+  height: auto;
+  filter: drop-shadow(0 0 30px oklch(0.78 0.13 74 / 0.45));
+}
+
+/* Ocultar el carril heráldico estructural del shell en la tienda: la
+   heráldica vive ahora dentro de la columna de filtros. */
+.page-shell-overlay:has(.shop-hall) > .relative > aside {
+  display: none;
+}
