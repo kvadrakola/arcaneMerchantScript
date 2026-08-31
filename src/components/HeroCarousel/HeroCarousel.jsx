@@ -24,7 +24,10 @@ export function HeroCarousel({ items }) {
       aria-label="Mercancías más preciadas"
       className="hero-carousel relative mx-auto w-[calc(100%-32px)] border-2 border-[oklch(0.36_0.04_55_/_0.6)] bg-[oklch(0.85_0.05_80_/_0.7)] p-4 sm:w-full sm:max-w-[1000px] sm:p-6"
     >
-      <span className="pointer-events-none absolute inset-[6px] border border-[oklch(0.36_0.04_55_/_0.35)]" />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-[6px] border border-[oklch(0.36_0.04_55_/_0.35)]"
+      />
 
       <div className="relative grid grid-cols-1 items-center gap-6 md:grid-cols-[280px_minmax(0,1fr)]">
         <div className="border border-[oklch(0.36_0.04_55_/_0.5)] bg-[oklch(0.9_0.04_84_/_0.6)]">
@@ -73,15 +76,14 @@ export function HeroCarousel({ items }) {
 
           <div
             className="mt-5 flex items-center gap-2"
-            role="tablist"
+            role="group"
             aria-label="Mercancías destacadas"
           >
             {items.map((it, i) => (
               <button
                 key={it.id}
                 type="button"
-                role="tab"
-                aria-selected={i === index}
+                aria-current={i === index ? "true" : undefined}
                 aria-label={`Mostrar ${it.title}`}
                 onClick={() => setIndex(i)}
                 className={`h-[10px] w-[10px] rotate-45 border border-[oklch(0.34_0.04_55_/_0.7)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[oklch(0.3_0.03_55)] ${

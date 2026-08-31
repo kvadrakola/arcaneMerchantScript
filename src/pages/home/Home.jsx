@@ -13,10 +13,10 @@ import { IMG } from "@/assets/assets";
 import { firstImage, isPresentable, listProducts } from "@/lib/platzi";
 import "./Home.css";
 
-const VIRTUDES = [
-  { t: "Honor", d: "Cada trato se cierra con palabra dada y sello de cera." },
-  { t: "Calidad", d: "Obras de artesanos examinadas por el gremio del reino." },
-  { t: "Confianza", d: "Miles de clientes en villas, burgos y castillos." },
+const GUILD_VIRTUES = [
+  { title: "Honor", description: "Cada trato se cierra con palabra dada y sello de cera." },
+  { title: "Calidad", description: "Obras de artesanos examinadas por el gremio del reino." },
+  { title: "Confianza", description: "Miles de clientes en villas, burgos y castillos." },
 ];
 
 /** Used only when the remote market cannot be reached. */
@@ -48,11 +48,11 @@ function Home() {
     retry: 1,
   });
 
-  const clean = data?.filter(isPresentable) ?? [];
+  const presentableProducts = data?.filter(isPresentable) ?? [];
 
-  const top =
-    clean.length > 0
-      ? [...clean]
+  const topProducts =
+    presentableProducts.length > 0
+      ? [...presentableProducts]
           .sort((a, b) => b.price - a.price)
           .slice(0, 5)
           .map((p, i) => ({
@@ -82,7 +82,7 @@ function Home() {
                     Las cinco mercancías más preciadas
                   </h2>
                 </Vellum>
-                <HeroCarousel items={top} />
+                <HeroCarousel items={topProducts} />
                 {isError && (
                   <p className="mt-4 text-center font-body text-[16px] text-ink-soft italic">
                     El mensajero del mercado no respondió; se muestran las mercancías del archivo
@@ -123,10 +123,14 @@ function Home() {
           </div>
 
           <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
-            {VIRTUDES.map((v) => (
-              <ParchmentCard key={v.t}>
-                <h2 className="font-display text-[22px] font-bold tracking-wide text-ink">{v.t}</h2>
-                <p className="mt-3 font-body text-[18px] leading-[1.6] text-ink-soft">{v.d}</p>
+            {GUILD_VIRTUES.map((virtue) => (
+              <ParchmentCard key={virtue.title}>
+                <h2 className="font-display text-[22px] font-bold tracking-wide text-ink">
+                  {virtue.title}
+                </h2>
+                <p className="mt-3 font-body text-[18px] leading-[1.6] text-ink-soft">
+                  {virtue.description}
+                </p>
               </ParchmentCard>
             ))}
           </div>
