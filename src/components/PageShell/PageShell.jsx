@@ -3,7 +3,12 @@ import { SiteFooter } from "@/components/SiteFooter/SiteFooter";
 import { IMG } from "@/assets/assets";
 import "./PageShell.css";
 
-export function PageShell({ children }) {
+/**
+ * Shared shell. `heraldryOverlay` lets a page (currently /tienda) keep the
+ * banner/lantern as pure decoration layered over a full-width main area
+ * instead of a structural left column.
+ */
+export function PageShell({ children, heraldryOverlay = false }) {
   return (
     <div className="page-shell min-h-dvh w-full" style={{ "--stone-texture": `url(${IMG.stone})` }}>
       <div className="page-shell-overlay flex min-h-dvh flex-col">
@@ -17,7 +22,16 @@ export function PageShell({ children }) {
         <SiteNav />
         <MobileHeraldry />
         <div className="relative flex flex-1 items-stretch">
-          <LeftRail />
+          {heraldryOverlay ? (
+            <div
+              className="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-[300px] lg:block"
+              aria-hidden="true"
+            >
+              <LeftRail decorative />
+            </div>
+          ) : (
+            <LeftRail />
+          )}
           <main id="contenido" className="relative min-w-0 flex-1">
             {children}
           </main>
@@ -52,19 +66,23 @@ function MobileHeraldry() {
 }
 
 /** Dark stone column with the heraldic banner and the hanging lantern. */
-function LeftRail() {
+function LeftRail({ decorative = false }) {
   return (
-    <aside className="relative hidden w-[300px] shrink-0 lg:block">
+    <aside
+      className={
+        decorative ? "relative h-full w-[300px]" : "relative hidden w-[300px] shrink-0 lg:block"
+      }
+    >
       <img
         src={IMG.banner}
-        alt="Estandarte con león rampante dorado"
+        alt={decorative ? "" : "Estandarte con león rampante dorado"}
         width={576}
         height={1152}
         className="page-shell-rail-banner absolute top-0 left-[52px] w-[190px]"
       />
       <img
         src={IMG.lantern}
-        alt="Farol de latón"
+        alt={decorative ? "" : "Farol de latón"}
         loading="lazy"
         width={672}
         height={992}
