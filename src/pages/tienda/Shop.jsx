@@ -139,7 +139,7 @@ function Shop() {
   return (
     <PageShell heraldryOverlay>
       <section className="shop-hall flex min-h-[calc(100vh-74px)] flex-col">
-        <div className="flex-1 px-4 pt-6 pb-10 sm:px-6 lg:pr-10 lg:pl-[270px]">
+        <div className="flex-1 px-4 pt-6 pb-10 sm:px-6 lg:pr-10 lg:pl-[176px]">
           <h1 className="sr-only">Tienda del reino</h1>
 
           <div className="grid grid-cols-1 gap-7 lg:grid-cols-[236px_minmax(0,1fr)]">
