@@ -1,14 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { PageShell } from "@/components/PageShell/PageShell";
-import { ParchmentPanel } from "@/components/ParchmentPanel/ParchmentPanel";
 import { InkButton } from "@/components/InkButton/InkButton";
 import { InkField } from "@/components/InkField/InkField";
 import { InkNotice } from "@/components/InkNotice/InkNotice";
-import { PageTitle } from "@/components/PageTitle/PageTitle";
-import { ParchmentCard } from "@/components/ParchmentCard/ParchmentCard";
+import { Ornament } from "@/components/Ornament/Ornament";
 import { ParchmentDialog } from "@/components/ParchmentDialog/ParchmentDialog";
-import { SealDivider } from "@/components/SealDivider/SealDivider";
 import { IMG } from "@/assets/assets";
 import {
   createProduct,
@@ -18,6 +15,7 @@ import {
   listProducts,
   updateProduct,
 } from "@/lib/platzi";
+import "./Shop.css";
 
 const EMPTY_FORM = { title: "", price: "", description: "", image: "" };
 
@@ -141,144 +139,201 @@ function Shop() {
 
   return (
     <PageShell>
-      <ParchmentPanel>
-        <div className="px-5 py-10 sm:px-8 lg:px-16 lg:py-14">
-          <PageTitle>Tienda</PageTitle>
+      <section
+        className="shop-surface min-h-[calc(100vh-74px)]"
+        style={{ "--shop-stone": `url(${IMG.stone})` }}
+      >
+        <div className="shop-surface-overlay flex min-h-[calc(100vh-74px)] flex-col">
+          <div className="flex-1 px-4 pt-6 pb-10 sm:px-6 lg:px-10">
+            <h1 className="sr-only">Tienda del reino</h1>
 
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-            <label className="sr-only" htmlFor="buscar">
-              Buscar mercancía
-            </label>
-            <input
-              id="buscar"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Buscar mercancía…"
-              className="ledger-control w-[240px]"
-            />
-            <InkButton onClick={openCreate}>Inscribir mercancía</InkButton>
-            <InkButton variant="outline" onClick={() => void refetch()}>
-              Recargar
-            </InkButton>
-          </div>
+            <div className="grid grid-cols-1 gap-7 lg:grid-cols-[248px_minmax(0,1fr)]">
+              <CatalogueSidebar
+                categories={categories}
+                category={category}
+                onCategory={setCategory}
+                search={search}
+                onSearch={setSearch}
+                onCreate={openCreate}
+                onReload={() => void refetch()}
+              />
 
-          <nav
-            aria-label="Categorías"
-            className="mt-6 flex flex-wrap items-center justify-center gap-3"
-          >
-            {categories.map((c) => (
-              <button
-                key={c}
-                type="button"
-                onClick={() => setCategory(c)}
-                aria-pressed={category === c}
-                className={`shrink-0 whitespace-nowrap border px-5 py-1.5 font-display text-[14px] tracking-[0.14em] uppercase focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[oklch(0.3_0.03_55)] ${
-                  category === c
-                    ? "border-[oklch(0.3_0.03_55)] bg-accent text-parchment"
-                    : "border-[oklch(0.34_0.04_55_/_0.6)] text-ink"
-                }`}
-              >
-                {c}
-              </button>
-            ))}
-          </nav>
+              <div className="min-w-0">
+                <CatalogueHeading />
 
-          {notice && (
-            <div className="mt-8">
-              <InkNotice title="Aviso del escribano">{notice}</InkNotice>
-            </div>
-          )}
-
-          {isPending && (
-            <div className="mt-12">
-              <InkNotice title="Abriendo el catálogo">
-                El escribano copia las mercancías del mercado…
-              </InkNotice>
-            </div>
-          )}
-
-          {isError && items.length === 0 && (
-            <div className="mt-12">
-              <InkNotice tone="error" title="El mercado no responde">
-                {error?.message ?? "No se pudo consultar el catálogo remoto."}
-              </InkNotice>
-            </div>
-          )}
-
-          {items.length > 0 && (
-            <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4">
-              {visibleProducts.map((p, i) => (
-                <ParchmentCard key={p.id} className="flex flex-col">
-                  <div className="border border-[oklch(0.36_0.04_55_/_0.5)] bg-[oklch(0.9_0.04_84_/_0.6)]">
-                    <img
-                      src={firstImage(p.images, IMG.products[i % IMG.products.length])}
-                      alt={p.title}
-                      loading="lazy"
-                      width={640}
-                      height={640}
-                      className="engraved-image aspect-square w-full object-cover"
-                      onError={(e) => {
-                        e.currentTarget.src = IMG.products[i % IMG.products.length];
-                      }}
-                    />
+                {notice && (
+                  <div className="mt-6" role="status">
+                    <InkNotice title="Aviso del escribano">{notice}</InkNotice>
                   </div>
-                  <h2 className="mt-4 font-display text-[19px] leading-snug font-bold text-ink">
-                    {p.title}
-                  </h2>
-                  <p className="mt-1 font-body text-[17px] text-ink-soft italic">
-                    {p.category?.name ?? "Mercancía"}
-                  </p>
-                  <div className="mt-3 ink-rule" />
-                  <p className="mt-3 font-display text-[20px] text-ink">
-                    {Math.round(p.price)}{" "}
-                    <span className="text-[15px] tracking-wider">monedas de oro</span>
-                  </p>
-                  {/* <div className="mt-4 flex flex-wrap gap-2">
-                    <InkButton>Añadir al carro</InkButton>
-                    <InkButton variant="outline" onClick={() => openEdit(p)}>
-                      Enmendar
-                    </InkButton>
-                    <InkButton variant="danger" onClick={() => void remove(p)}>
-                      Retirar
-                    </InkButton>
-                  </div> */}
-                </ParchmentCard>
-              ))}
-              {visibleProducts.length === 0 && (
-                <div className="sm:col-span-2 xl:col-span-4">
-                  <InkNotice title="Sin mercancías">
-                    Ninguna mercancía coincide con la búsqueda.
-                  </InkNotice>
-                </div>
-              )}
+                )}
+
+                {isPending && (
+                  <div className="mt-8">
+                    <InkNotice title="Abriendo el catálogo">
+                      El escribano copia las mercancías del mercado…
+                    </InkNotice>
+                  </div>
+                )}
+
+                {isError && items.length === 0 && (
+                  <div className="mt-8">
+                    <InkNotice tone="error" title="El mercado no responde">
+                      {error?.message ?? "No se pudo consultar el catálogo remoto."}
+                    </InkNotice>
+                  </div>
+                )}
+
+                {items.length > 0 && (
+                  <div className="mt-6 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
+                    {visibleProducts.map((p, i) => (
+                      <ProductCard key={p.id} product={p} fallbackIndex={i} />
+                    ))}
+                    {visibleProducts.length === 0 && (
+                      <div className="col-span-2 lg:col-span-3 xl:col-span-4">
+                        <InkNotice title="Sin mercancías">
+                          Ninguna mercancía coincide con la búsqueda.
+                        </InkNotice>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
-          )}
-
-          <div className="mt-16 pb-4">
-            <SealDivider />
           </div>
-        </div>
 
-        <ProductDialog
-          open={creating}
-          title="Inscribir mercancía"
-          form={form}
-          setForm={setForm}
-          busy={busy}
-          onClose={() => setCreating(false)}
-          onSubmit={submitCreate}
-        />
-        <ProductDialog
-          open={editing !== null}
-          title="Enmendar mercancía"
-          form={form}
-          setForm={setForm}
-          busy={busy}
-          onClose={() => setEditing(null)}
-          onSubmit={submitEdit}
-        />
-      </ParchmentPanel>
+          {/* Mostrador de madera bajo el catálogo, como en el diseño del reino. */}
+          <div className="shop-counter h-[120px] w-full sm:h-[150px]" aria-hidden="true" />
+        </div>
+      </section>
+
+      <ProductDialog
+        open={creating}
+        title="Inscribir mercancía"
+        form={form}
+        setForm={setForm}
+        busy={busy}
+        onClose={() => setCreating(false)}
+        onSubmit={submitCreate}
+      />
+      <ProductDialog
+        open={editing !== null}
+        title="Enmendar mercancía"
+        form={form}
+        setForm={setForm}
+        busy={busy}
+        onClose={() => setEditing(null)}
+        onSubmit={submitEdit}
+      />
     </PageShell>
+  );
+}
+
+/** Ornamental band above the grid. */
+function CatalogueHeading() {
+  return (
+    <div className="relative flex items-center gap-4">
+      <Ornament className="flex-1 opacity-70" />
+      <h2 className="shrink-0 font-display text-[19px] tracking-[0.08em] whitespace-nowrap text-parchment sm:text-[22px]">
+        Todos los productos
+      </h2>
+      <Ornament className="flex-1 opacity-70" />
+    </div>
+  );
+}
+
+/** Left rail with the category list and the catalogue controls. */
+function CatalogueSidebar({
+  categories,
+  category,
+  onCategory,
+  search,
+  onSearch,
+  onCreate,
+  onReload,
+}) {
+  return (
+    <aside className="shop-sidebar relative h-fit px-5 py-6">
+      <span className="shop-sidebar-corner pointer-events-none absolute top-2 left-2 h-4 w-4 border-t border-l" />
+      <span className="shop-sidebar-corner pointer-events-none absolute top-2 right-2 h-4 w-4 border-t border-r" />
+      <span className="shop-sidebar-corner pointer-events-none absolute bottom-2 left-2 h-4 w-4 border-b border-l" />
+      <span className="shop-sidebar-corner pointer-events-none absolute right-2 bottom-2 h-4 w-4 border-b border-r" />
+
+      <nav aria-label="Categorías">
+        <h2 className="font-display text-[17px] tracking-[0.1em] text-parchment">Categorías</h2>
+        <div className="mt-3 flex flex-col">
+          {categories.map((c) => (
+            <button
+              key={c}
+              type="button"
+              className="shop-category"
+              aria-pressed={category === c}
+              onClick={() => onCategory(c)}
+            >
+              {c}
+            </button>
+          ))}
+        </div>
+      </nav>
+
+      <div className="mt-7">
+        <h2 className="font-display text-[17px] tracking-[0.1em] text-parchment">Buscar</h2>
+        <label className="sr-only" htmlFor="buscar">
+          Buscar mercancía
+        </label>
+        <input
+          id="buscar"
+          value={search}
+          onChange={(e) => onSearch(e.target.value)}
+          placeholder="Buscar mercancía…"
+          className="ledger-control mt-3 w-full"
+        />
+        <div className="mt-4 flex flex-col gap-3">
+          <InkButton onClick={onCreate}>Inscribir mercancía</InkButton>
+          <InkButton variant="outline" onClick={onReload}>
+            Recargar
+          </InkButton>
+        </div>
+      </div>
+    </aside>
+  );
+}
+
+/** Single catalogue entry: engraved image over a parchment name/price strip. */
+function ProductCard({ product, fallbackIndex }) {
+  const fallback = IMG.products[fallbackIndex % IMG.products.length];
+  return (
+    <article
+      className="shop-card flex flex-col overflow-hidden"
+      style={{ "--shop-parchment": `url(${IMG.parchment})` }}
+    >
+      <div className="shop-card-media">
+        <img
+          src={firstImage(product.images, fallback)}
+          alt={product.title}
+          loading="lazy"
+          width={640}
+          height={640}
+          className="aspect-[4/3] w-full object-cover"
+          onError={(e) => {
+            e.currentTarget.src = fallback;
+          }}
+        />
+      </div>
+      <div className="flex flex-1 flex-col justify-between px-3 py-2.5">
+        <h3 className="font-display text-[15px] leading-snug font-semibold text-ink">
+          {product.title}
+        </h3>
+        <p className="mt-1.5 font-body text-[16px] text-ink-soft">
+          {Math.round(product.price)}{" "}
+          <span className="text-[13px] tracking-wider">monedas de oro</span>
+        </p>
+      </div>
+      {/* Acciones CRUD temporalmente ocultas (sin carrito en el proyecto).
+      <div className="flex flex-wrap gap-2 px-3 pb-3">
+        <InkButton variant="outline" onClick={() => openEdit(product)}>Enmendar</InkButton>
+        <InkButton variant="danger" onClick={() => void remove(product)}>Retirar</InkButton>
+      </div> */}
+    </article>
   );
 }
 
