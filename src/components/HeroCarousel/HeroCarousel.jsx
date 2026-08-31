@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { GoldFleur } from "@/components/Ornament/Ornament";
 import { InkButton } from "@/components/InkButton/InkButton";
 import { IMG } from "@/assets/assets";
+import "./HeroCarousel.css";
 
 /** Dynamic banner showing the most expensive wares of the market. */
 export function HeroCarousel({ items }) {
@@ -21,10 +22,7 @@ export function HeroCarousel({ items }) {
   return (
     <section
       aria-label="Mercancías más preciadas"
-      className="relative mx-auto w-[calc(100%-32px)] border-2 border-[oklch(0.36_0.04_55_/_0.6)] bg-[oklch(0.85_0.05_80_/_0.7)] p-4 sm:w-full sm:max-w-[1000px] sm:p-6"
-      style={{
-        boxShadow: "inset 0 0 40px oklch(0.28 0.035 55 / 0.25), 0 6px 16px oklch(0 0 0 / 0.3)",
-      }}
+      className="hero-carousel relative mx-auto w-[calc(100%-32px)] border-2 border-[oklch(0.36_0.04_55_/_0.6)] bg-[oklch(0.85_0.05_80_/_0.7)] p-4 sm:w-full sm:max-w-[1000px] sm:p-6"
     >
       <span className="pointer-events-none absolute inset-[6px] border border-[oklch(0.36_0.04_55_/_0.35)]" />
 
@@ -36,13 +34,9 @@ export function HeroCarousel({ items }) {
             alt={item.title}
             width={640}
             height={640}
-            className="aspect-square w-full object-cover"
+            className="engraved-image aspect-square w-full object-cover"
             onError={(e) => {
               e.currentTarget.src = IMG.products[index % IMG.products.length];
-            }}
-            style={{
-              mixBlendMode: "multiply",
-              filter: "sepia(0.55) contrast(1.05) saturate(0.85)",
             }}
           />
         </div>
