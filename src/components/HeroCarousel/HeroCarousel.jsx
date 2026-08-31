@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { GoldFleur } from "./Ornament";
-import { InkButton } from "./parts";
-import { IMG } from "./assets";
+import { GoldFleur } from "@/components/Ornament/Ornament";
+import { InkButton } from "@/components/InkButton/InkButton";
+import { IMG } from "@/assets/assets";
 
 /** Dynamic banner showing the most expensive wares of the market. */
 export function HeroCarousel({ items }) {

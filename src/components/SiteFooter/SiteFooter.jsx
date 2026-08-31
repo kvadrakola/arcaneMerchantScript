@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { IMG } from "./assets";
-import { NAV_LINKS } from "./nav-links";
+import { IMG } from "@/assets/assets";
+import { NAV_LINKS } from "@/lib/navLinks";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
