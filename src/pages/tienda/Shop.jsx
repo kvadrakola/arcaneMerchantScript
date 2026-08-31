@@ -314,7 +314,7 @@ function CatalogueSidebar({
             placeholder="Buscar mercancía…"
             className="ledger-control mt-3 w-full"
           />
-          <div className="mt-4 flex flex-col gap-3">
+          <div className="mt-4 flex flex-col items-center gap-3">
             <InkButton onClick={onCreate}>Inscribir mercancía</InkButton>
             <InkButton variant="outline" onClick={onReload}>
               Recargar
