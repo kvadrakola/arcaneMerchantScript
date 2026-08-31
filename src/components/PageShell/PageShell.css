@@ -17,6 +17,13 @@
   filter: drop-shadow(0 0 30px oklch(0.78 0.13 74 / 0.45));
 }
 
+/* Variante decorativa: la heráldica se reduce para no robar anchura al
+   contenido; sigue siendo puramente ornamental y fuera del flujo. */
+.page-shell-rail--slim {
+  transform: scale(0.6);
+  transform-origin: top left;
+}
+
 .page-shell-rail-banner {
   filter: drop-shadow(0 14px 22px oklch(0 0 0 / 0.75));
 }
