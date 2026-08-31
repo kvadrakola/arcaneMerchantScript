@@ -3,18 +3,10 @@
  * Docs: https://open-meteo.com/en/docs
  */
 
-export interface CurrentWeather {
-  temperature: number;
-  code: number;
-  isDay: boolean;
-  label: string;
-  place: string;
-}
-
 export const DEFAULT_PLACE = { name: "Sevilla", latitude: 37.3891, longitude: -5.9845 };
 
 /** WMO weather interpretation codes → Spanish labels. */
-const WMO: Record<number, string> = {
+const WMO = {
   0: "Cielo despejado",
   1: "Mayormente despejado",
   2: "Parcialmente nublado",
@@ -45,13 +37,11 @@ const WMO: Record<number, string> = {
   99: "Tormenta con granizo fuerte",
 };
 
-export function weatherLabel(code: number): string {
+export function weatherLabel(code) {
   return WMO[code] ?? "Cielo incierto";
 }
 
-export type WeatherGlyph = "sun" | "moon" | "cloud" | "rain" | "snow" | "storm" | "fog";
-
-export function weatherGlyph(code: number, isDay: boolean): WeatherGlyph {
+export function weatherGlyph(code, isDay) {
   if (code === 0 || code === 1) return isDay ? "sun" : "moon";
   if (code === 2 || code === 3) return "cloud";
   if (code === 45 || code === 48) return "fog";
@@ -61,19 +51,14 @@ export function weatherGlyph(code: number, isDay: boolean): WeatherGlyph {
   return "cloud";
 }
 
-export async function fetchCurrentWeather(
-  latitude: number,
-  longitude: number,
-  place: string,
-): Promise<CurrentWeather> {
+export async function fetchCurrentWeather(latitude, longitude, place) {
   const url =
     `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}` +
     `&current=temperature_2m,weather_code,is_day&timezone=auto`;
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Open-Meteo ${res.status}`);
-  const json = (await res.json()) as {
-    current: { temperature_2m: number; weather_code: number; is_day: number };
-  };
+  const json = await res.json();
+
   const code = json.current.weather_code;
   return {
     temperature: Math.round(json.current.temperature_2m),

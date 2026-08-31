@@ -4,16 +4,8 @@ import { GoldFleur } from "./Ornament";
 import { InkButton } from "./parts";
 import { IMG } from "./assets";
 
-export interface HeroItem {
-  id: number | string;
-  title: string;
-  price: number;
-  image: string;
-  category: string;
-}
-
 /** Dynamic banner showing the most expensive wares of the market. */
-export function HeroCarousel({ items }: { items: HeroItem[] }) {
+export function HeroCarousel({ items }) {
   const [index, setIndex] = useState(0);
   const total = items.length;
 
@@ -24,15 +16,14 @@ export function HeroCarousel({ items }: { items: HeroItem[] }) {
   }, [total]);
 
   if (total === 0) return null;
-  const item = items[Math.min(index, total - 1)]!;
+  const item = items[Math.min(index, total - 1)];
 
   return (
     <section
       aria-label="Mercancías más preciadas"
       className="relative mx-auto w-[calc(100%-32px)] border-2 border-[oklch(0.36_0.04_55_/_0.6)] bg-[oklch(0.85_0.05_80_/_0.7)] p-4 sm:w-full sm:max-w-[1000px] sm:p-6"
       style={{
-        boxShadow:
-          "inset 0 0 40px oklch(0.28 0.035 55 / 0.25), 0 6px 16px oklch(0 0 0 / 0.3)",
+        boxShadow: "inset 0 0 40px oklch(0.28 0.035 55 / 0.25), 0 6px 16px oklch(0 0 0 / 0.3)",
       }}
     >
       <span className="pointer-events-none absolute inset-[6px] border border-[oklch(0.36_0.04_55_/_0.35)]" />
@@ -47,9 +38,12 @@ export function HeroCarousel({ items }: { items: HeroItem[] }) {
             height={640}
             className="aspect-square w-full object-cover"
             onError={(e) => {
-              e.currentTarget.src = IMG.products[index % IMG.products.length]!;
+              e.currentTarget.src = IMG.products[index % IMG.products.length];
             }}
-            style={{ mixBlendMode: "multiply", filter: "sepia(0.55) contrast(1.05) saturate(0.85)" }}
+            style={{
+              mixBlendMode: "multiply",
+              filter: "sepia(0.55) contrast(1.05) saturate(0.85)",
+            }}
           />
         </div>
 
@@ -83,7 +77,11 @@ export function HeroCarousel({ items }: { items: HeroItem[] }) {
             </div>
           </div>
 
-          <div className="mt-5 flex items-center gap-2" role="tablist" aria-label="Mercancías destacadas">
+          <div
+            className="mt-5 flex items-center gap-2"
+            role="tablist"
+            aria-label="Mercancías destacadas"
+          >
             {items.map((it, i) => (
               <button
                 key={it.id}
@@ -104,15 +102,7 @@ export function HeroCarousel({ items }: { items: HeroItem[] }) {
   );
 }
 
-function ArrowButton({
-  label,
-  onClick,
-  dir,
-}: {
-  label: string;
-  onClick: () => void;
-  dir: "left" | "right";
-}) {
+function ArrowButton({ label, onClick, dir }) {
   return (
     <button
       type="button"
@@ -120,7 +110,15 @@ function ArrowButton({
       aria-label={label}
       className="flex h-10 w-10 items-center justify-center border-2 border-[oklch(0.34_0.04_55_/_0.7)] text-ink transition-colors hover:bg-[oklch(0.3_0.03_55_/_0.1)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[oklch(0.3_0.03_55)]"
     >
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        aria-hidden="true"
+      >
         {dir === "left" ? <path d="M15 5l-7 7 7 7" /> : <path d="M9 5l7 7-7 7" />}
       </svg>
     </button>

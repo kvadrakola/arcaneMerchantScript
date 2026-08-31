@@ -1,8 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { PageShell, ParchmentPanel } from "@/components/medieval/PageShell";
-import { InkButton, InkNotice, PageTitle, ParchmentCard, SealDivider, Vellum } from "@/components/medieval/parts";
-import { HeroCarousel, type HeroItem } from "@/components/medieval/HeroCarousel";
+import {
+  InkButton,
+  InkNotice,
+  PageTitle,
+  ParchmentCard,
+  SealDivider,
+  Vellum,
+} from "@/components/medieval/parts";
+import { HeroCarousel } from "@/components/medieval/HeroCarousel";
 import { IMG } from "@/components/medieval/assets";
 import { firstImage, isPresentable, listProducts } from "@/lib/platzi";
 
@@ -32,12 +39,24 @@ const VIRTUDES = [
 ];
 
 /** Used only when the remote market cannot be reached. */
-const HERO_FALLBACK: HeroItem[] = [
-  { id: "f1", title: "Espada larga de Aldoria", price: 240, image: IMG.products[0]!, category: "Armería" },
-  { id: "f2", title: "Códice iluminado", price: 320, image: IMG.products[2]!, category: "Escritos" },
-  { id: "f3", title: "Yelmo con penacho", price: 185, image: IMG.products[1]!, category: "Arneses" },
-  { id: "f4", title: "Capacete de guardia", price: 150, image: IMG.products[1]!, category: "Arneses" },
-  { id: "f5", title: "Elixir de la villa", price: 46, image: IMG.products[3]!, category: "Botica" },
+const HERO_FALLBACK = [
+  {
+    id: "f1",
+    title: "Espada larga de Aldoria",
+    price: 240,
+    image: IMG.products[0],
+    category: "Armería",
+  },
+  { id: "f2", title: "Códice iluminado", price: 320, image: IMG.products[2], category: "Escritos" },
+  { id: "f3", title: "Yelmo con penacho", price: 185, image: IMG.products[1], category: "Arneses" },
+  {
+    id: "f4",
+    title: "Capacete de guardia",
+    price: 150,
+    image: IMG.products[1],
+    category: "Arneses",
+  },
+  { id: "f5", title: "Elixir de la villa", price: 46, image: IMG.products[3], category: "Botica" },
 ];
 
 function HomePage() {
@@ -50,18 +69,19 @@ function HomePage() {
 
   const clean = data?.filter(isPresentable) ?? [];
 
-  const top: HeroItem[] = clean.length > 0
-    ? [...clean]
-        .sort((a, b) => b.price - a.price)
-        .slice(0, 5)
-        .map((p, i) => ({
-          id: p.id,
-          title: p.title,
-          price: p.price,
-          image: firstImage(p.images, IMG.products[i % IMG.products.length]!),
-          category: p.category?.name ?? "Mercancía",
-        }))
-    : HERO_FALLBACK;
+  const top =
+    clean.length > 0
+      ? [...clean]
+          .sort((a, b) => b.price - a.price)
+          .slice(0, 5)
+          .map((p, i) => ({
+            id: p.id,
+            title: p.title,
+            price: p.price,
+            image: firstImage(p.images, IMG.products[i % IMG.products.length]),
+            category: p.category?.name ?? "Mercancía",
+          }))
+      : HERO_FALLBACK;
 
   return (
     <PageShell>
@@ -84,8 +104,8 @@ function HomePage() {
                 <HeroCarousel items={top} />
                 {isError && (
                   <p className="mt-4 text-center font-body text-[16px] text-ink-soft italic">
-                    El mensajero del mercado no respondió; se muestran las mercancías del
-                    archivo del gremio.
+                    El mensajero del mercado no respondió; se muestran las mercancías del archivo
+                    del gremio.
                   </p>
                 )}
               </>
@@ -95,12 +115,12 @@ function HomePage() {
           <div className="mt-14 grid grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(0,1fr)_46%]">
             <Vellum className="max-w-[560px] space-y-7 font-body text-[19px] leading-[1.75] text-ink sm:text-[21px]">
               <p>
-                Bienvenido al mercado del reino, donde mercaderes y artesanos exponen sus
-                mejores obras bajo el amparo del gremio.
+                Bienvenido al mercado del reino, donde mercaderes y artesanos exponen sus mejores
+                obras bajo el amparo del gremio.
               </p>
               <p>
-                Armas forjadas, arneses, libros iluminados y remedios de botica esperan al
-                viajero que cruce nuestras puertas.
+                Armas forjadas, arneses, libros iluminados y remedios de botica esperan al viajero
+                que cruce nuestras puertas.
               </p>
               <div className="flex flex-wrap gap-4 pt-2">
                 <Link to="/tienda" className="focus-visible:outline-none">
@@ -125,9 +145,7 @@ function HomePage() {
           <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
             {VIRTUDES.map((v) => (
               <ParchmentCard key={v.t}>
-                <h2 className="font-display text-[22px] font-bold tracking-wide text-ink">
-                  {v.t}
-                </h2>
+                <h2 className="font-display text-[22px] font-bold tracking-wide text-ink">{v.t}</h2>
                 <p className="mt-3 font-body text-[18px] leading-[1.6] text-ink-soft">{v.d}</p>
               </ParchmentCard>
             ))}

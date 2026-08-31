@@ -55,12 +55,10 @@ export function SiteNav() {
               activeOptions={{ exact: l.to === "/" }}
               className="group relative px-2 py-1 font-body text-[19px] text-parchment/85 transition-colors hover:text-gold focus-visible:text-gold focus-visible:outline-none"
             >
-              {({ isActive }: { isActive: boolean }) => (
+              {({ isActive }) => (
                 <span className="flex items-center gap-2">
                   {isActive && <GoldFleur />}
-                  <span className={isActive ? "text-gold brass-glow" : undefined}>
-                    {l.label}
-                  </span>
+                  <span className={isActive ? "text-gold brass-glow" : undefined}>{l.label}</span>
                   {isActive && <GoldFleur />}
                   {isActive && (
                     <span className="pointer-events-none absolute -inset-x-3 -inset-y-1.5 rounded-sm border border-gold/45 shadow-[inset_0_0_14px_oklch(0.78_0.11_84_/_0.18)]" />
@@ -122,14 +120,18 @@ export function SiteNav() {
   );
 }
 
-function MenuIcon({ open }: { open: boolean }) {
+function MenuIcon({ open }) {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-      {open ? (
-        <path d="M5 5l14 14M19 5L5 19" />
-      ) : (
-        <path d="M4 7h16M4 12h16M4 17h16" />
-      )}
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      aria-hidden="true"
+    >
+      {open ? <path d="M5 5l14 14M19 5L5 19" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
     </svg>
   );
 }
