@@ -264,7 +264,6 @@ function HeadingFinial({ flip = false }) {
   );
 }
 
-
 /** Left rail with the category list and the catalogue controls. */
 function CatalogueSidebar({
   categories,
@@ -281,7 +280,6 @@ function CatalogueSidebar({
       <span className="shop-panel-corner shop-panel-corner--tr" aria-hidden="true" />
       <span className="shop-panel-corner shop-panel-corner--bl" aria-hidden="true" />
       <span className="shop-panel-corner shop-panel-corner--br" aria-hidden="true" />
-
 
       <nav aria-label="Categorías">
         <h2 className="shop-panel-title">Categorías</h2>
@@ -323,15 +321,11 @@ function CatalogueSidebar({
   );
 }
 
-
 /** Single catalogue entry framed like medieval metalwork over parchment. */
 function ProductCard({ product, fallbackIndex }) {
   const fallback = IMG.products[fallbackIndex % IMG.products.length];
   return (
-    <article
-      className="shop-card"
-      style={{ "--shop-parchment": `url(${IMG.parchment})` }}
-    >
+    <article className="shop-card" style={{ "--shop-parchment": `url(${IMG.parchment})` }}>
       <div className="shop-card-inner flex flex-col">
         <div className="shop-card-media">
           <img
@@ -362,7 +356,6 @@ function ProductCard({ product, fallbackIndex }) {
         <InkButton variant="danger" onClick={() => void remove(product)}>Retirar</InkButton>
       </div> */}
     </article>
-
   );
 }
 
