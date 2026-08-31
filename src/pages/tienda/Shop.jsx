@@ -142,10 +142,10 @@ function Shop() {
         {/* El comercio es de dos columnas: panel de filtros a la izquierda y
             catálogo a la derecha. La heráldica decorativa vive dentro de la
             columna de filtros; el hueco a la izquierda es sólo margen de piedra. */}
-        <div className="flex-1 px-4 pt-6 pb-10 sm:px-6 lg:pr-10 lg:pl-[124px]">
+        <div className="flex-1 px-4 pt-6 pb-10 sm:px-6 lg:pr-10 lg:pl-[80px]">
           <h1 className="sr-only">Tienda del reino</h1>
 
-          <div className="grid grid-cols-1 gap-7 lg:grid-cols-[236px_minmax(0,1fr)]">
+          <div className="grid grid-cols-1 gap-7 lg:grid-cols-[300px_minmax(0,1fr)]">
             <CatalogueSidebar
               categories={categories}
               category={category}
@@ -279,7 +279,7 @@ function CatalogueSidebar({
 }) {
   return (
     <div className="shop-sidebar flex flex-col">
-      <aside className="shop-panel relative h-fit px-5 py-6">
+      <aside className="shop-panel relative h-fit px-7 py-8">
         <span className="shop-panel-corner shop-panel-corner--tl" aria-hidden="true" />
         <span className="shop-panel-corner shop-panel-corner--tr" aria-hidden="true" />
         <span className="shop-panel-corner shop-panel-corner--bl" aria-hidden="true" />
