@@ -154,7 +154,7 @@ function Shop() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Buscar mercancía…"
-              className="w-[240px] border border-[oklch(0.34_0.04_55_/_0.6)] bg-[oklch(0.92_0.04_84_/_0.7)] px-3 py-2 font-body text-[17px] text-ink focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[oklch(0.3_0.03_55)]"
+              className="ledger-control w-[240px]"
             />
             <InkButton onClick={openCreate}>Inscribir mercancía</InkButton>
             <InkButton variant="outline" onClick={() => void refetch()}>
@@ -216,13 +216,9 @@ function Shop() {
                       loading="lazy"
                       width={640}
                       height={640}
-                      className="aspect-square w-full object-cover"
+                      className="engraved-image aspect-square w-full object-cover"
                       onError={(e) => {
                         e.currentTarget.src = IMG.products[i % IMG.products.length];
-                      }}
-                      style={{
-                        mixBlendMode: "multiply",
-                        filter: "sepia(0.55) contrast(1.05) saturate(0.85)",
                       }}
                     />
                   </div>
